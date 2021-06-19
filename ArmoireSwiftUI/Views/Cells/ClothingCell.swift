@@ -6,6 +6,7 @@
 // Copyright © 2021 Geraldine Turcios. All rights reserved.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct ClothingCell: View {
@@ -33,17 +34,16 @@ struct ClothingCell: View {
 
             VStack(spacing: 10) {
                 HStack(spacing: 10) {
-                    AsyncImage(url: clothing.imageUrl) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 100, height: 100)
-                            .clipped()
-                    } placeholder: {
-                        Image("Placeholder")
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                    }
+                    KFImage(clothing.imageUrl)
+                        .resizable()
+                        .placeholder {
+                            Image("Placeholder")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                        }
+                        .scaledToFill()
+                        .frame(width: 100, height: 100)
+                        .clipped()
 
                     VStack(alignment: .leading, spacing: 6) {
                         HStack {

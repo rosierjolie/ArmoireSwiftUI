@@ -23,7 +23,7 @@ struct ListFooterView: View {
             Spacer()
         }
         .listRowSeparator(.hidden)
-        .padding(.top, 18)
+        .padding(.vertical, 30)
     }
 }
 

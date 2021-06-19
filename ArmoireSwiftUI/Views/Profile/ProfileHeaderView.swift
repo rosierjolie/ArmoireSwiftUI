@@ -6,6 +6,7 @@
 // Copyright © 2021 Geraldine Turcios. All rights reserved.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct ProfileHeaderView: View {
@@ -16,19 +17,18 @@ struct ProfileHeaderView: View {
             Spacer()
 
             VStack {
-                AsyncImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/b/b5/191125_Taylor_Swift_at_the_2019_American_Music_Awards_%28cropped%29.png")) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 120, height: 120)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color(.lightGray), lineWidth: 1))
-                } placeholder: {
-                    Image("Placeholder")
-                        .resizable()
-                        .frame(width: 120, height: 120)
-                        .clipShape(Circle())
-                }
+                KFImage(URL(string: "https://upload.wikimedia.org/wikipedia/commons/b/b5/191125_Taylor_Swift_at_the_2019_American_Music_Awards_%28cropped%29.png"))
+                    .resizable()
+                    .placeholder {
+                        Image("Placeholder")
+                            .resizable()
+                            .frame(width: 120, height: 120)
+                            .clipShape(Circle())
+                    }
+                    .scaledToFill()
+                    .frame(width: 120, height: 120)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color(.lightGray), lineWidth: 1))
 
                 Text(user.username)
                     .font(.system(size: 30, weight: .bold))

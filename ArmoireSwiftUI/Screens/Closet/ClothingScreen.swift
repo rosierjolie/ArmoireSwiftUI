@@ -6,6 +6,7 @@
 // Copyright © 2021 Geraldine Turcios. All rights reserved.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct ClothingScreen: View {
@@ -32,27 +33,25 @@ struct ClothingScreen: View {
 
     @ViewBuilder private var clothingImage: some View {
         if isLandscapeOrientation {
-            AsyncImage(url: clothing.imageUrl) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                ProgressView("Loading image")
-            }
+            KFImage(clothing.imageUrl)
+                .resizable()
+                .loadImmediately()
+                .placeholder { ProgressView("Loading image") }
+                .scaledToFit()
         } else {
-            AsyncImage(url: clothing.imageUrl) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
-                    .clipped()
-            } placeholder: {
-                Image("Placeholder")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 300)
-                    .clipped()
-            }
+            KFImage(clothing.imageUrl)
+                .resizable()
+                .loadImmediately()
+                .placeholder {
+                    Image("Placeholder")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 300)
+                        .clipped()
+                }
+                .scaledToFill()
+                .frame(height: 300)
+                .clipped()
         }
     }
 
