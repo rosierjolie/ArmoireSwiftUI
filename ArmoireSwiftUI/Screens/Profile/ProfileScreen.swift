@@ -11,7 +11,7 @@ import SwiftUI
 struct ProfileScreen: View {
     var body: some View {
         List {
-            Section(header: ProfileHeaderView()) {
+            Section(header: ProfileHeaderView(user: .example)) {
                 NavigationLink(destination: AccountScreen()) {
                     Text("Account")
                 }

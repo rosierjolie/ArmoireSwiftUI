@@ -38,26 +38,12 @@ struct AccountScreen: View {
             }
 
             Section {
-                NavigationLink(destination: Text("Change Username")) {
-                    HStack {
-                        Text("Username")
-
-                        Spacer()
-
-                        Text("rosierjolie")
-                            .foregroundColor(.secondary)
-                    }
+                NavigationCell(title: "Username", subtitle: "rosierjolie") {
+                    Text("Change Username")
                 }
 
-                NavigationLink(destination: Text("Change Email")) {
-                    HStack {
-                        Text("Email")
-
-                        Spacer()
-
-                        Text("rosierjolie@gmail.com")
-                            .accentColor(.secondary)
-                    }
+                NavigationCell(title: "Email", subtitle: "rosierjolie@gmail.com") {
+                    Text("Change Email")
                 }
 
                 NavigationLink(destination: Text("Change Password")) {

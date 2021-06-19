@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ProfileHeaderView: View {
+    var user: User
+
     var body: some View {
         HStack {
             Spacer()
@@ -28,12 +30,12 @@ struct ProfileHeaderView: View {
                         .clipShape(Circle())
                 }
 
-                Text("@rosierjolie")
+                Text(user.username)
                     .font(.system(size: 30, weight: .bold))
                     .foregroundColor(.primary)
                     .textCase(.lowercase)
 
-                Text("rosierjolie@gmail.com")
+                Text(user.email)
                     .font(.system(size: 20, weight: .medium))
                     .accentColor(.secondary)
                     .textCase(.lowercase)
@@ -47,7 +49,7 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderViewPreviews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView()
+        ProfileHeaderView(user: .example)
             .previewLayout(.sizeThatFits)
     }
 }

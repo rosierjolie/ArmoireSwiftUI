@@ -29,7 +29,7 @@ struct ClothingSection: View {
     }
 }
 
-struct ClothingSection_Previews: PreviewProvider {
+struct ClothingSectionPreviews: PreviewProvider {
     static var previews: some View {
         ClothingSection(title: "About")
     }

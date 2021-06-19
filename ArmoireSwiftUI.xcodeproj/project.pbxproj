@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C60F95C8267DAEE10073E46E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60F95C7267DAEE10073E46E /* User.swift */; };
 		C612FE85267C52E100483638 /* ClothingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C612FE84267C52E100483638 /* ClothingCell.swift */; };
 		C612FE87267C58D100483638 /* ClothingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C612FE86267C58D100483638 /* ClothingScreen.swift */; };
 		C612FE89267C596200483638 /* ClothingFormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C612FE88267C596200483638 /* ClothingFormScreen.swift */; };
@@ -38,6 +39,7 @@
 		C6C3EF422677165300797CE8 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF412677165300797CE8 /* CanvasViewModel.swift */; };
 		C6ED90D9267DA6A400C917D2 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */; };
 		C6ED90DB267DA7D200C917D2 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED90DA267DA7D200C917D2 /* AccountScreen.swift */; };
+		C6ED90DD267DAC5300C917D2 /* NavigationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED90DC267DAC5300C917D2 /* NavigationCell.swift */; };
 		C6FAB31E267D0A90003BDB3D /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAB31D267D0A90003BDB3D /* View+Ext.swift */; };
 		C6FAB320267D12E3003BDB3D /* FolderFormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAB31F267D12E3003BDB3D /* FolderFormScreen.swift */; };
 		C6FAB322267D13B8003BDB3D /* AMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAB321267D13B8003BDB3D /* AMButton.swift */; };
@@ -45,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C60F95C7267DAEE10073E46E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C612FE84267C52E100483638 /* ClothingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCell.swift; sourceTree = "<group>"; };
 		C612FE86267C58D100483638 /* ClothingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingScreen.swift; sourceTree = "<group>"; };
 		C612FE88267C596200483638 /* ClothingFormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingFormScreen.swift; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 		C6C3EF412677165300797CE8 /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
 		C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		C6ED90DA267DA7D200C917D2 /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
+		C6ED90DC267DAC5300C917D2 /* NavigationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCell.swift; sourceTree = "<group>"; };
 		C6FAB31D267D0A90003BDB3D /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		C6FAB31F267D12E3003BDB3D /* FolderFormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFormScreen.swift; sourceTree = "<group>"; };
 		C6FAB321267D13B8003BDB3D /* AMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMButton.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			children = (
 				C612FE8B267C5D7300483638 /* Clothing.swift */,
 				C612FE90267C640600483638 /* Folder.swift */,
+				C60F95C7267DAEE10073E46E /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 		C6ED90D7267DA68E00C917D2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				C6ED90DC267DAC5300C917D2 /* NavigationCell.swift */,
 				C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */,
 			);
 			path = Profile;
@@ -389,6 +395,7 @@
 				C612FE8C267C5D7300483638 /* Clothing.swift in Sources */,
 				C65B5384267536C00096230A /* ArmoireSwiftUIApp.swift in Sources */,
 				C699B91B267D22490010571D /* AMTextEditor.swift in Sources */,
+				C6ED90DD267DAC5300C917D2 /* NavigationCell.swift in Sources */,
 				C6ED90D9267DA6A400C917D2 /* ProfileHeaderView.swift in Sources */,
 				C6C3EF3B267710E800797CE8 /* CanvasScreen.swift in Sources */,
 				C65B53B226753D5C0096230A /* FolderCell.swift in Sources */,
@@ -406,6 +413,7 @@
 				C6FAB324267D14A6003BDB3D /* AMTextField.swift in Sources */,
 				C65B53B6267541960096230A /* FolderScreen.swift in Sources */,
 				C612FE85267C52E100483638 /* ClothingCell.swift in Sources */,
+				C60F95C8267DAEE10073E46E /* User.swift in Sources */,
 				C612FE89267C596200483638 /* ClothingFormScreen.swift in Sources */,
 				C612FE91267C640600483638 /* Folder.swift in Sources */,
 				C699B929267D67410010571D /* LoginScreen.swift in Sources */,
