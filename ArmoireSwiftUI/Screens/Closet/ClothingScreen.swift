@@ -57,7 +57,7 @@ struct ClothingScreen: View {
     }
 
     private var clothingInformationView: some View {
-        LazyVStack(spacing: 0) {
+        LazyVStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
                     Text(clothing.name)
@@ -75,14 +75,12 @@ struct ClothingScreen: View {
                     .font(.system(size: 24, weight: .medium))
             }
             .padding(.horizontal, 12)
-            .padding(.bottom, 20)
 
             if let description = clothing.description {
                 ClothingSection(title: "About")
 
                 Text(description)
                     .font(.system(size: 14, weight: .regular))
-                    .padding(.vertical, 10)
                     .padding(.horizontal, 12)
             }
 
@@ -100,19 +98,34 @@ struct ClothingScreen: View {
                 }
             }
             .font(.system(size: 16, weight: .medium))
-            .padding(.vertical, 10)
             .padding(.horizontal, 12)
 
             if let clothingUrl = clothing.url, let url = URL(string: clothingUrl) {
                 ClothingSection(title: "URL")
 
-                Link(clothingUrl, destination: url)
-                    .foregroundColor(Color(.systemTeal))
-                    .lineLimit(1)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 12)
+                HStack {
+                    Link(clothingUrl, destination: url)
+                        .foregroundColor(Color(.systemTeal))
+                        .lineLimit(1)
+                        .padding(.horizontal, 12)
+
+                    Spacer()
+                }
             }
+
+            HStack {
+                Text("Created on \(clothing.dateCreated.convertToDayMonthYearFormat())")
+
+                Spacer()
+
+                if let dateUpdated = clothing.dateUpdated {
+                    Text("Updated on \(dateUpdated.convertToDayMonthYearFormat())")
+                }
+            }
+            .foregroundColor(Color(.systemGray))
+            .padding(.horizontal, 12)
         }
+        .padding(.bottom, 16)
     }
 
     var body: some View {

@@ -12,7 +12,7 @@ struct ClosetScreen: View {
     @State private var searchText = ""
     @State private var isFolderFormVisible = false
 
-    @State private var folders: [Folder] = [.example, .example, .example]
+    @State private var folders: [Folder] = Array(repeating: .example, count: 20)
 
     var body: some View {
         List {

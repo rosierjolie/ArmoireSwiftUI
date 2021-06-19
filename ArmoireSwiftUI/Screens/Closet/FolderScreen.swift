@@ -13,7 +13,7 @@ struct FolderScreen: View {
     @State private var isFolderFormVisible = false
     @State private var isClothingFormVisible = false
 
-    @State private var clothes: [Clothing] = [.example, .example, .example, .example, .example]
+    @State private var clothes: [Clothing] = Array(repeating: .example, count: 20)
 
     var folder: Folder
 
