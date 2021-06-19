@@ -18,22 +18,23 @@ struct ProfileHeaderView: View {
                     image
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 100, height: 100)
-                        .cornerRadius(.greatestFiniteMagnitude)
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color(.lightGray), lineWidth: 1))
                 } placeholder: {
                     Image("Placeholder")
                         .resizable()
-                        .frame(width: 100, height: 100)
-                        .cornerRadius(.greatestFiniteMagnitude)
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
                 }
 
                 Text("@rosierjolie")
-                    .font(.system(size: 26, weight: .bold))
+                    .font(.system(size: 30, weight: .bold))
                     .foregroundColor(.primary)
                     .textCase(.lowercase)
 
                 Text("rosierjolie@gmail.com")
-                    .font(.system(size: 14, weight: .medium))
+                    .font(.system(size: 20, weight: .medium))
                     .foregroundColor(.secondary)
                     .textCase(.lowercase)
             }
@@ -44,8 +45,9 @@ struct ProfileHeaderView: View {
     }
 }
 
-struct ProfileHeaderView_Previews: PreviewProvider {
+struct ProfileHeaderViewPreviews: PreviewProvider {
     static var previews: some View {
         ProfileHeaderView()
+            .previewLayout(.sizeThatFits)
     }
 }
