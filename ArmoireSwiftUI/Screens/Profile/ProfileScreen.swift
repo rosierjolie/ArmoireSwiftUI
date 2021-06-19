@@ -12,7 +12,7 @@ struct ProfileScreen: View {
     var body: some View {
         List {
             Section(header: ProfileHeaderView()) {
-                NavigationLink(destination: Text("Account")) {
+                NavigationLink(destination: AccountScreen()) {
                     Text("Account")
                 }
 

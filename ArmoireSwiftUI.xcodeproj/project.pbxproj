@@ -37,6 +37,7 @@
 		C6C3EF3F2677160800797CE8 /* CanvasToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF3E2677160800797CE8 /* CanvasToolbar.swift */; };
 		C6C3EF422677165300797CE8 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF412677165300797CE8 /* CanvasViewModel.swift */; };
 		C6ED90D9267DA6A400C917D2 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */; };
+		C6ED90DB267DA7D200C917D2 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED90DA267DA7D200C917D2 /* AccountScreen.swift */; };
 		C6FAB31E267D0A90003BDB3D /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAB31D267D0A90003BDB3D /* View+Ext.swift */; };
 		C6FAB320267D12E3003BDB3D /* FolderFormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAB31F267D12E3003BDB3D /* FolderFormScreen.swift */; };
 		C6FAB322267D13B8003BDB3D /* AMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAB321267D13B8003BDB3D /* AMButton.swift */; };
@@ -76,6 +77,7 @@
 		C6C3EF3E2677160800797CE8 /* CanvasToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolbar.swift; sourceTree = "<group>"; };
 		C6C3EF412677165300797CE8 /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
 		C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		C6ED90DA267DA7D200C917D2 /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		C6FAB31D267D0A90003BDB3D /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		C6FAB31F267D12E3003BDB3D /* FolderFormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFormScreen.swift; sourceTree = "<group>"; };
 		C6FAB321267D13B8003BDB3D /* AMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMButton.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				C65B5397267539450096230A /* ProfileScreen.swift */,
+				C6ED90DA267DA7D200C917D2 /* AccountScreen.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				C699B92B267D67500010571D /* SignUpScreen.swift in Sources */,
 				C699B923267D4FD10010571D /* FolderFormViewModel.swift in Sources */,
 				C65B5392267537440096230A /* AppTabView.swift in Sources */,
+				C6ED90DB267DA7D200C917D2 /* AccountScreen.swift in Sources */,
 				C6C3EF3F2677160800797CE8 /* CanvasToolbar.swift in Sources */,
 				C65B5394267537BF0096230A /* ClosetScreen.swift in Sources */,
 				C6FAB320267D12E3003BDB3D /* FolderFormScreen.swift in Sources */,
