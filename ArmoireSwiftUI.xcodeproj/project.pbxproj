@@ -36,6 +36,7 @@
 		C6C3EF3D2677117700797CE8 /* CanvasScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF3C2677117700797CE8 /* CanvasScene.swift */; };
 		C6C3EF3F2677160800797CE8 /* CanvasToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF3E2677160800797CE8 /* CanvasToolbar.swift */; };
 		C6C3EF422677165300797CE8 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF412677165300797CE8 /* CanvasViewModel.swift */; };
+		C6ED90D9267DA6A400C917D2 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */; };
 		C6FAB31E267D0A90003BDB3D /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAB31D267D0A90003BDB3D /* View+Ext.swift */; };
 		C6FAB320267D12E3003BDB3D /* FolderFormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAB31F267D12E3003BDB3D /* FolderFormScreen.swift */; };
 		C6FAB322267D13B8003BDB3D /* AMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAB321267D13B8003BDB3D /* AMButton.swift */; };
@@ -74,6 +75,7 @@
 		C6C3EF3C2677117700797CE8 /* CanvasScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasScene.swift; sourceTree = "<group>"; };
 		C6C3EF3E2677160800797CE8 /* CanvasToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolbar.swift; sourceTree = "<group>"; };
 		C6C3EF412677165300797CE8 /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
+		C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		C6FAB31D267D0A90003BDB3D /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		C6FAB31F267D12E3003BDB3D /* FolderFormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFormScreen.swift; sourceTree = "<group>"; };
 		C6FAB321267D13B8003BDB3D /* AMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMButton.swift; sourceTree = "<group>"; };
@@ -169,12 +171,13 @@
 		C65B53A526753A440096230A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C699B924267D57DC0010571D /* Closet */,
 				C699B91F267D32020010571D /* Buttons */,
 				C65B53B026753D190096230A /* Cells */,
+				C699B924267D57DC0010571D /* Closet */,
 				C699B91C267D23A70010571D /* Inputs */,
 				C612FE95267C669200483638 /* Lists */,
 				C65B53AA26753A6E0096230A /* Navigation */,
+				C6ED90D7267DA68E00C917D2 /* Profile */,
 				C612FE94267C668800483638 /* Toolbars */,
 			);
 			path = Views;
@@ -292,6 +295,14 @@
 			path = "View Models";
 			sourceTree = "<group>";
 		};
+		C6ED90D7267DA68E00C917D2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -374,6 +385,7 @@
 				C612FE8C267C5D7300483638 /* Clothing.swift in Sources */,
 				C65B5384267536C00096230A /* ArmoireSwiftUIApp.swift in Sources */,
 				C699B91B267D22490010571D /* AMTextEditor.swift in Sources */,
+				C6ED90D9267DA6A400C917D2 /* ProfileHeaderView.swift in Sources */,
 				C6C3EF3B267710E800797CE8 /* CanvasScreen.swift in Sources */,
 				C65B53B226753D5C0096230A /* FolderCell.swift in Sources */,
 				C699B91E267D305B0010571D /* ClothingFormViewModel.swift in Sources */,

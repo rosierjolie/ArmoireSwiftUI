@@ -10,12 +10,41 @@ import SwiftUI
 
 struct ProfileScreen: View {
     var body: some View {
-        Text("Hello, World!")
+        List {
+            Section(header: ProfileHeaderView()) {
+                NavigationLink(destination: Text("Account")) {
+                    Text("Account")
+                }
+
+                NavigationLink(destination: Text("Notifications")) {
+                    Text("Notifications")
+                }
+            }
+
+            Section {
+                NavigationLink(destination: Text("About")) {
+                    Text("About")
+                }
+
+                NavigationLink(destination: Text("Tip Jar")) {
+                    Text("Tip Jar")
+                }
+            }
+
+            Section {
+                Button("Log Out", role: .destructive, action: {})
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Profile")
     }
 }
 
 struct ProfileScreenPreviews: PreviewProvider {
     static var previews: some View {
-        ProfileScreen()
+        NavigationView {
+            ProfileScreen()
+        }
+        .navigationViewStyle(.stack)
     }
 }
