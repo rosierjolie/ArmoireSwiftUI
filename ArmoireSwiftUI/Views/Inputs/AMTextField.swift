@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct AMTextField: View {
+    @State private var fieldIsSecure = false
+
     var placeholder: String
     @Binding var text: String
 
@@ -17,12 +19,24 @@ struct AMTextField: View {
         self._text = text
     }
 
+    func isSecure() -> some View {
+        var view = self
+        view._fieldIsSecure = State(initialValue: true)
+        return view
+    }
+
     var body: some View {
-        TextField(placeholder, text: $text)
-            .padding()
-            .background(Color(.systemGray5))
-            .cornerRadius(10)
-            .tint(.accentColor)
+        Group {
+            if fieldIsSecure {
+                SecureField(placeholder, text: $text)
+            } else {
+                TextField(placeholder, text: $text)
+            }
+        }
+        .padding()
+        .background(Color(.systemGray5))
+        .cornerRadius(10)
+        .tint(.accentColor)
     }
 }
 

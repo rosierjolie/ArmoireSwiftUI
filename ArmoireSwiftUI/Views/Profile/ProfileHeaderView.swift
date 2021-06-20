@@ -37,7 +37,7 @@ struct ProfileHeaderView: View {
 
                 Text(user.email)
                     .font(.system(size: 20, weight: .medium))
-                    .accentColor(.secondary)
+                    .foregroundColor(.secondary)
                     .textCase(.lowercase)
             }
             .padding(.vertical, 20)

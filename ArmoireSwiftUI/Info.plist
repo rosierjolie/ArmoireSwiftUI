@@ -12,5 +12,12 @@
 		<string>Quicksand-Semibold.ttf</string>
 		<string>Quicksand-Light.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>AccentColor</string>
+		<key>UIImageName</key>
+		<string>Launch Screen Logo</string>
+	</dict>
 </dict>
 </plist>

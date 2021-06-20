@@ -9,8 +9,77 @@
 import SwiftUI
 
 struct LoginScreen: View {
+    @State private var email = ""
+    @State private var password = ""
+    @State private var resetScreenIsVisible = false
+    @State private var signUpScreenIsVisible = false
+
+    @FocusState private var focusedField: LoginField?
+
+    private enum LoginField: Hashable { case email, password }
+
+    private func handleSubmit() {
+        switch focusedField {
+        case .email: focusedField = .password
+        default: focusedField = nil
+        }
+    }
+
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            VStack(spacing: 20) {
+                Image("Login Logo")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.bottom, 20)
+
+                HStack {
+                    Text("Login")
+                        .font(.largeTitle.bold())
+
+                    Spacer()
+                }
+
+                AMTextField("Email", text: $email)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                    .focused($focusedField, equals: .email)
+                    .keyboardType(.emailAddress)
+                    .textContentType(.emailAddress)
+                    .submitLabel(.next)
+
+                AMTextField("Password", text: $password)
+                    .isSecure()
+                    .focused($focusedField, equals: .password)
+                    .textContentType(.password)
+                    .submitLabel(.go)
+
+                AMButton(title: "Sign In", action: {})
+
+                Button("Forgot Password?", action: { resetScreenIsVisible = true })
+                    .font(.system(size: 18, weight: .medium))
+                    .foregroundColor(Color(.systemGray))
+
+                Spacer()
+
+                HStack(spacing: 0) {
+                    Text("Don't have an account? ")
+
+                    Button("Sign up", action: { signUpScreenIsVisible = true })
+                        .foregroundColor(Color("AccentColor"))
+                }
+                .font(.system(size: 18, weight: .medium))
+                .ignoresSafeArea(.keyboard)
+            }
+            .fullScreenCover(isPresented: $resetScreenIsVisible) { ResetScreen() }
+            .fullScreenCover(isPresented: $signUpScreenIsVisible) { SignUpScreen() }
+            .navigationBarHidden(true)
+            .onSubmit(handleSubmit)
+            .padding(.vertical, 30)
+            .padding(.horizontal, 20)
+            .toolbar { FormKeyboardToolbar(dismissAction: { focusedField = nil }) }
+        }
+        .navigationViewStyle(.stack)
     }
 }
 
