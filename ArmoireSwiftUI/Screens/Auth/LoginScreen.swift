@@ -9,11 +9,9 @@
 import SwiftUI
 
 struct LoginScreen: View {
-    @State private var email = ""
-    @State private var password = ""
+    @StateObject private var viewModel = LoginViewModel()
     @State private var resetScreenIsVisible = false
     @State private var signUpScreenIsVisible = false
-
     @FocusState private var focusedField: LoginField?
 
     private enum LoginField: Hashable { case email, password }
@@ -29,8 +27,6 @@ struct LoginScreen: View {
         NavigationView {
             VStack(spacing: 20) {
                 Image("Login Logo")
-                    .resizable()
-                    .scaledToFit()
                     .padding(.bottom, 20)
 
                 HStack {
@@ -40,7 +36,7 @@ struct LoginScreen: View {
                     Spacer()
                 }
 
-                AMTextField("Email", text: $email)
+                AMTextField("Email", text: $viewModel.email)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .focused($focusedField, equals: .email)
@@ -48,7 +44,7 @@ struct LoginScreen: View {
                     .textContentType(.emailAddress)
                     .submitLabel(.next)
 
-                AMTextField("Password", text: $password)
+                AMTextField("Password", text: $viewModel.password)
                     .isSecure()
                     .focused($focusedField, equals: .password)
                     .textContentType(.password)
@@ -69,7 +65,6 @@ struct LoginScreen: View {
                         .foregroundColor(Color("AccentColor"))
                 }
                 .font(.system(size: 18, weight: .medium))
-                .ignoresSafeArea(.keyboard)
             }
             .fullScreenCover(isPresented: $resetScreenIsVisible) { ResetScreen() }
             .fullScreenCover(isPresented: $signUpScreenIsVisible) { SignUpScreen() }

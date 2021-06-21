@@ -30,6 +30,8 @@
 		C68961EC267FB8CA005DDF1D /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C68961EB267FB8CA005DDF1D /* FirebaseFirestoreSwift-Beta */; };
 		C68961EE267FB8CA005DDF1D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C68961ED267FB8CA005DDF1D /* FirebaseStorage */; };
 		C68961F0267FB9BE005DDF1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68961EF267FB9BE005DDF1D /* GoogleService-Info.plist */; };
+		C69490B626801A8600D24219 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69490B526801A8600D24219 /* LoginViewModel.swift */; };
+		C69490B826801A9700D24219 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69490B726801A9700D24219 /* SignUpViewModel.swift */; };
 		C699B91B267D22490010571D /* AMTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B91A267D22490010571D /* AMTextEditor.swift */; };
 		C699B91E267D305B0010571D /* ClothingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B91D267D305B0010571D /* ClothingFormViewModel.swift */; };
 		C699B921267D4B690010571D /* FormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B920267D4B690010571D /* FormToolbar.swift */; };
@@ -75,6 +77,8 @@
 		C65B53B326753E920096230A /* ListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFooterView.swift; sourceTree = "<group>"; };
 		C65B53B5267541960096230A /* FolderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderScreen.swift; sourceTree = "<group>"; };
 		C68961EF267FB9BE005DDF1D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C69490B526801A8600D24219 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C69490B726801A9700D24219 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C699B91A267D22490010571D /* AMTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMTextEditor.swift; sourceTree = "<group>"; };
 		C699B91D267D305B0010571D /* ClothingFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingFormViewModel.swift; sourceTree = "<group>"; };
 		C699B920267D4B690010571D /* FormToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormToolbar.swift; sourceTree = "<group>"; };
@@ -323,6 +327,8 @@
 				C6C3EF412677165300797CE8 /* CanvasViewModel.swift */,
 				C699B91D267D305B0010571D /* ClothingFormViewModel.swift */,
 				C699B922267D4FD10010571D /* FolderFormViewModel.swift */,
+				C69490B526801A8600D24219 /* LoginViewModel.swift */,
+				C69490B726801A9700D24219 /* SignUpViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C699B92B267D67500010571D /* SignUpScreen.swift in Sources */,
+				C69490B826801A9700D24219 /* SignUpViewModel.swift in Sources */,
 				C699B923267D4FD10010571D /* FolderFormViewModel.swift in Sources */,
 				C65B5392267537440096230A /* AppTabView.swift in Sources */,
 				C6ED90DB267DA7D200C917D2 /* AccountScreen.swift in Sources */,
@@ -453,6 +460,7 @@
 				C60F95C8267DAEE10073E46E /* User.swift in Sources */,
 				C612FE89267C596200483638 /* ClothingFormScreen.swift in Sources */,
 				C612FE91267C640600483638 /* Folder.swift in Sources */,
+				C69490B626801A8600D24219 /* LoginViewModel.swift in Sources */,
 				C699B929267D67410010571D /* LoginScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
