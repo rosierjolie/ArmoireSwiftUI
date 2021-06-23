@@ -9,8 +9,43 @@
 import SwiftUI
 
 struct ResetScreen: View {
+    @Environment(\.dismiss) private var dismiss
+
+    @State private var email = ""
+
     var body: some View {
-        Text("Hello, World!")
+        VStack(spacing: 20) {
+            HStack {
+                Button(action: dismiss.callAsFunction) {
+                    Image(systemName: "xmark.circle")
+                        .font(.system(size: 24, weight: .semibold))
+                        .foregroundColor(.accentColor)
+                }
+
+                Spacer()
+            }
+
+            Text("Forgot Password?")
+                .font(.system(size: 30, weight: .semibold))
+
+            Text("Please enter the email you used to register your account. You should recieve password reset instructions in the entered email.")
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 10)
+
+            AMTextField("Email", text: $email)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .keyboardType(.emailAddress)
+                .textContentType(.emailAddress)
+                .submitLabel(.done)
+
+            AMButton(title: "Reset", action: {})
+
+            Spacer()
+        }
+        .padding(.top, 8)
+        .padding(.horizontal, 20)
     }
 }
 

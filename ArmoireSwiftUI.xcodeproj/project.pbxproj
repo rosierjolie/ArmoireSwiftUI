@@ -235,8 +235,8 @@
 		C65B53A826753A5F0096230A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				C65B5397267539450096230A /* ProfileScreen.swift */,
 				C6ED90DA267DA7D200C917D2 /* AccountScreen.swift */,
+				C65B5397267539450096230A /* ProfileScreen.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -289,8 +289,8 @@
 		C699B91C267D23A70010571D /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
-				C6FAB323267D14A6003BDB3D /* AMTextField.swift */,
 				C699B91A267D22490010571D /* AMTextEditor.swift */,
+				C6FAB323267D14A6003BDB3D /* AMTextField.swift */,
 			);
 			path = Inputs;
 			sourceTree = "<group>";

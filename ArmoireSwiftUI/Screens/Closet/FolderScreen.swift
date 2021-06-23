@@ -53,6 +53,5 @@ struct FolderScreenPreviews: PreviewProvider {
             FolderScreen(folder: .example)
         }
         .navigationViewStyle(.stack)
-        .preferredColorScheme(.dark)
     }
 }

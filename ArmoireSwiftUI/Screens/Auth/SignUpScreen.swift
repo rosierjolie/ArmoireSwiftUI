@@ -15,13 +15,11 @@ struct SignUpScreen: View {
     @FocusState private var focusedField: SignUpField?
 
     private enum SignUpField: Hashable {
-        case firstName, lastName, username, email, password, confirmPassword
+        case username, email, password, confirmPassword
     }
 
     private func handleSubmit() {
         switch focusedField {
-        case .firstName: focusedField = .lastName
-        case .lastName: focusedField = .username
         case .username: focusedField = .email
         case .email: focusedField = .password
         case .password: focusedField = .confirmPassword
@@ -33,7 +31,7 @@ struct SignUpScreen: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 20) {
                 Button(action: dismiss.callAsFunction) {
-                    Image(systemName: "xmark")
+                    Image(systemName: "xmark.circle")
                         .font(.system(size: 24, weight: .semibold))
                         .foregroundColor(.accentColor)
                         .padding(.bottom, 10)
@@ -42,13 +40,7 @@ struct SignUpScreen: View {
                 Text("Sign Up")
                     .font(.largeTitle.bold())
 
-                AMTextField("First Name", text: $viewModel.firstName)
-                    .focused($focusedField, equals: .firstName)
-                    .submitLabel(.next)
-
-                AMTextField("Last Name", text: $viewModel.lastName)
-                    .focused($focusedField, equals: .lastName)
-                    .submitLabel(.next)
+                AMButton(title: "Add Avatar", action: {})
 
                 Group {
                     AMTextField("@Username", text: $viewModel.username)
@@ -66,13 +58,13 @@ struct SignUpScreen: View {
                 AMTextField("Password", text: $viewModel.password)
                     .isSecure()
                     .focused($focusedField, equals: .password)
-                    .textContentType(.password)
+                    .textContentType(.oneTimeCode)
                     .submitLabel(.next)
 
                 AMTextField("Confirm Password", text: $viewModel.confirmPassword)
                     .isSecure()
                     .focused($focusedField, equals: .confirmPassword)
-                    .textContentType(.password)
+                    .textContentType(.oneTimeCode)
                     .submitLabel(.done)
 
                 AMButton(title: "Register", action: {})
@@ -84,7 +76,6 @@ struct SignUpScreen: View {
             .padding([.top, .horizontal], 20)
             .toolbar { FormKeyboardToolbar(dismissAction: { focusedField = nil }) }
         }
-        .navigationViewStyle(.stack)
     }
 }
 
