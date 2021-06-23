@@ -10,9 +10,12 @@ import SwiftUI
 
 struct ClothingFormScreen: View {
     @Environment(\.dismiss) private var dismiss
+
     @StateObject private var viewModel = ClothingFormViewModel()
-    @State private var isOptionalFieldsVisible = false
     @FocusState private var focusedField: ClothingField?
+
+    @State private var isSourceTypeDialogVisible = false
+    @State private var isOptionalFieldsVisible = false
 
     var clothing: Clothing?
 
@@ -33,7 +36,9 @@ struct ClothingFormScreen: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    AMButton(title: "Add Image", action: {})
+                    SelectedImageView(selectedImage: viewModel.selectedImage)
+
+                    AMButton(title: "Add Image") { isSourceTypeDialogVisible = true }
 
                     AMTextField("Name", text: $viewModel.name)
                         .focused($focusedField, equals: .name)
@@ -82,9 +87,32 @@ struct ClothingFormScreen: View {
                 FormKeyboardToolbar(dismissAction: { focusedField = nil })
             }
         }
+        .actionSheet(isPresented: $isSourceTypeDialogVisible) {
+            ActionSheet(
+                title: Text("Photo"),
+                message: Text("Please select a method to add an image."),
+                buttons: [
+                    .default(
+                        Text("Camera"),
+                        action: { viewModel.sourceTypeItem = .init(sourceType: .camera) }
+                    ),
+                    .default(
+                        Text("Photo Library"),
+                        action: { viewModel.sourceTypeItem = .init(sourceType: .photoLibrary) }
+                    ),
+                    .cancel(Text("Cancel"))
+                ]
+            )
+        }
         .onAppear { viewModel.setPreviousValues(clothing: clothing) }
         .onSubmit(handleSubmit)
         .navigationViewStyle(.stack)
+        .sheet(item: $viewModel.sourceTypeItem) { sourceTypeItem in
+            ImagePicker(
+                sourceType: sourceTypeItem.sourceType,
+                selectedImage: $viewModel.selectedImage
+            )
+        }
     }
 }
 

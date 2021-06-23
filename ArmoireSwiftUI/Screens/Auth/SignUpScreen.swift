@@ -8,11 +8,6 @@
 
 import SwiftUI
 
-fileprivate struct SourceTypeItem: Identifiable {
-    let id = UUID()
-    var sourceType: UIImagePickerController.SourceType
-}
-
 struct SignUpScreen: View {
     @Environment(\.dismiss) private var dismiss
 
@@ -20,8 +15,6 @@ struct SignUpScreen: View {
     @FocusState private var focusedField: SignUpField?
 
     @State private var isSourceTypeDialogVisible = false
-    @State private var sourceTypeItem: SourceTypeItem?
-    @State private var selectedImage: UIImage?
 
     private enum SignUpField: Hashable {
         case username, email, password, confirmPassword
@@ -50,18 +43,7 @@ struct SignUpScreen: View {
                     Text("Sign Up")
                         .font(.largeTitle.bold())
 
-                    if let selectedImage = selectedImage {
-                        HStack {
-                            Spacer()
-
-                            Image(uiImage: selectedImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxHeight: 280)
-
-                            Spacer()
-                        }
-                    }
+                    SelectedImageView(selectedImage: viewModel.selectedImage)
 
                     AMButton(title: "Add Avatar") { isSourceTypeDialogVisible = true }
 
@@ -106,19 +88,22 @@ struct SignUpScreen: View {
                 buttons: [
                     .default(
                         Text("Camera"),
-                        action: { sourceTypeItem = .init(sourceType: .camera) }
+                        action: { viewModel.sourceTypeItem = .init(sourceType: .camera) }
                     ),
                     .default(
                         Text("Photo Library"),
-                        action: { sourceTypeItem = .init(sourceType: .photoLibrary) }
+                        action: { viewModel.sourceTypeItem = .init(sourceType: .photoLibrary) }
                     ),
                     .cancel(Text("Cancel"))
                 ]
             )
         }
         .onSubmit(handleSubmit)
-        .sheet(item: $sourceTypeItem) { sourceTypeItem in
-            ImagePicker(sourceType: sourceTypeItem.sourceType, selectedImage: $selectedImage)
+        .sheet(item: $viewModel.sourceTypeItem) { sourceTypeItem in
+            ImagePicker(
+                sourceType: sourceTypeItem.sourceType,
+                selectedImage: $viewModel.selectedImage
+            )
         }
     }
 }

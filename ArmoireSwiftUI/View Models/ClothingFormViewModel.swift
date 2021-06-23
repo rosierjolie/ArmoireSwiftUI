@@ -9,6 +9,9 @@
 import SwiftUI
 
 final class ClothingFormViewModel: ObservableObject {
+    @Published var sourceTypeItem: SourceTypeItem?
+    @Published var selectedImage: UIImage?
+
     @Published var name = ""
     @Published var brand = ""
     @Published var quantity = 0
