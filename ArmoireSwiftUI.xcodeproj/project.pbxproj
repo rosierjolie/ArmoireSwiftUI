@@ -40,6 +40,7 @@
 		C699B929267D67410010571D /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B928267D67410010571D /* LoginScreen.swift */; };
 		C699B92B267D67500010571D /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B92A267D67500010571D /* SignUpScreen.swift */; };
 		C699B92D267D67600010571D /* ResetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B92C267D67600010571D /* ResetScreen.swift */; };
+		C6B4790D2682F1060078B727 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B4790C2682F1060078B727 /* ImagePicker.swift */; };
 		C6C3EF3B267710E800797CE8 /* CanvasScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF3A267710E800797CE8 /* CanvasScreen.swift */; };
 		C6C3EF3D2677117700797CE8 /* CanvasScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF3C2677117700797CE8 /* CanvasScene.swift */; };
 		C6C3EF3F2677160800797CE8 /* CanvasToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF3E2677160800797CE8 /* CanvasToolbar.swift */; };
@@ -87,6 +88,7 @@
 		C699B928267D67410010571D /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		C699B92A267D67500010571D /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		C699B92C267D67600010571D /* ResetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetScreen.swift; sourceTree = "<group>"; };
+		C6B4790C2682F1060078B727 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C6C3EF3A267710E800797CE8 /* CanvasScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasScreen.swift; sourceTree = "<group>"; };
 		C6C3EF3C2677117700797CE8 /* CanvasScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasScene.swift; sourceTree = "<group>"; };
 		C6C3EF3E2677160800797CE8 /* CanvasToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolbar.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		C65B53A526753A440096230A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C6B4790B2682F0FF0078B727 /* UIKit */,
 				C699B91F267D32020010571D /* Buttons */,
 				C65B53B026753D190096230A /* Cells */,
 				C699B924267D57DC0010571D /* Closet */,
@@ -319,6 +322,14 @@
 				C699B92A267D67500010571D /* SignUpScreen.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		C6B4790B2682F0FF0078B727 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				C6B4790C2682F1060078B727 /* ImagePicker.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		C6C3EF402677163D00797CE8 /* View Models */ = {
@@ -460,6 +471,7 @@
 				C60F95C8267DAEE10073E46E /* User.swift in Sources */,
 				C612FE89267C596200483638 /* ClothingFormScreen.swift in Sources */,
 				C612FE91267C640600483638 /* Folder.swift in Sources */,
+				C6B4790D2682F1060078B727 /* ImagePicker.swift in Sources */,
 				C69490B626801A8600D24219 /* LoginViewModel.swift in Sources */,
 				C699B929267D67410010571D /* LoginScreen.swift in Sources */,
 			);

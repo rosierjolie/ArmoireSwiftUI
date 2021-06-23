@@ -8,11 +8,20 @@
 
 import SwiftUI
 
+fileprivate struct SourceTypeItem: Identifiable {
+    let id = UUID()
+    var sourceType: UIImagePickerController.SourceType
+}
+
 struct SignUpScreen: View {
     @Environment(\.dismiss) private var dismiss
 
     @StateObject private var viewModel = SignUpViewModel()
     @FocusState private var focusedField: SignUpField?
+
+    @State private var isSourceTypeDialogVisible = false
+    @State private var sourceTypeItem: SourceTypeItem?
+    @State private var selectedImage: UIImage?
 
     private enum SignUpField: Hashable {
         case username, email, password, confirmPassword
@@ -29,52 +38,87 @@ struct SignUpScreen: View {
 
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 20) {
-                Button(action: dismiss.callAsFunction) {
-                    Image(systemName: "xmark.circle")
-                        .font(.system(size: 24, weight: .semibold))
-                        .foregroundColor(.accentColor)
-                        .padding(.bottom, 10)
-                }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    Button(action: dismiss.callAsFunction) {
+                        Image(systemName: "xmark.circle")
+                            .font(.system(size: 24, weight: .semibold))
+                            .foregroundColor(.accentColor)
+                            .padding(.bottom, 10)
+                    }
 
-                Text("Sign Up")
-                    .font(.largeTitle.bold())
+                    Text("Sign Up")
+                        .font(.largeTitle.bold())
 
-                AMButton(title: "Add Avatar", action: {})
+                    if let selectedImage = selectedImage {
+                        HStack {
+                            Spacer()
 
-                Group {
-                    AMTextField("@Username", text: $viewModel.username)
-                        .focused($focusedField, equals: .username)
+                            Image(uiImage: selectedImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 280)
 
-                    AMTextField("Email", text: $viewModel.email)
-                        .focused($focusedField, equals: .email)
-                        .keyboardType(.emailAddress)
-                        .textContentType(.emailAddress)
-                }
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-                .submitLabel(.next)
+                            Spacer()
+                        }
+                    }
 
-                AMTextField("Password", text: $viewModel.password)
-                    .isSecure()
-                    .focused($focusedField, equals: .password)
-                    .textContentType(.oneTimeCode)
+                    AMButton(title: "Add Avatar") { isSourceTypeDialogVisible = true }
+
+                    Group {
+                        AMTextField("@Username", text: $viewModel.username)
+                            .focused($focusedField, equals: .username)
+
+                        AMTextField("Email", text: $viewModel.email)
+                            .focused($focusedField, equals: .email)
+                            .keyboardType(.emailAddress)
+                            .textContentType(.emailAddress)
+                    }
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
                     .submitLabel(.next)
 
-                AMTextField("Confirm Password", text: $viewModel.confirmPassword)
-                    .isSecure()
-                    .focused($focusedField, equals: .confirmPassword)
-                    .textContentType(.oneTimeCode)
-                    .submitLabel(.done)
+                    AMTextField("Password", text: $viewModel.password)
+                        .isSecure()
+                        .focused($focusedField, equals: .password)
+                        .textContentType(.oneTimeCode)
+                        .submitLabel(.next)
 
-                AMButton(title: "Register", action: {})
+                    AMTextField("Confirm Password", text: $viewModel.confirmPassword)
+                        .isSecure()
+                        .focused($focusedField, equals: .confirmPassword)
+                        .textContentType(.oneTimeCode)
+                        .submitLabel(.done)
 
-                Spacer()
+                    AMButton(title: "Register", action: {})
+
+                    Spacer()
+                }
+                .padding([.top, .horizontal], 20)
             }
             .navigationBarHidden(true)
-            .onSubmit(handleSubmit)
-            .padding([.top, .horizontal], 20)
             .toolbar { FormKeyboardToolbar(dismissAction: { focusedField = nil }) }
+        }
+        .actionSheet(isPresented: $isSourceTypeDialogVisible) {
+            ActionSheet(
+                title: Text("Photo"),
+                message: Text("Please select a method to add an image."),
+                buttons: [
+                    .default(
+                        Text("Camera"),
+                        action: { sourceTypeItem = .init(sourceType: .camera) }
+                    ),
+                    .default(
+                        Text("Photo Library"),
+                        action: { sourceTypeItem = .init(sourceType: .photoLibrary) }
+                    ),
+                    .cancel(Text("Cancel"))
+                ]
+            )
+        }
+        .onSubmit(handleSubmit)
+        .sheet(item: $sourceTypeItem) { sourceTypeItem in
+            ImagePicker(sourceType: sourceTypeItem.sourceType, selectedImage: $selectedImage)
         }
     }
 }
