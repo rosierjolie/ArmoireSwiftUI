@@ -34,7 +34,7 @@ struct FolderCell: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(folder.title)
-                        .font(.system(size: 20, weight: .medium))
+                        .systemScaledFont(size: 20, weight: .medium)
                         .foregroundColor(.accentColor)
 
                     Spacer()
@@ -44,12 +44,12 @@ struct FolderCell: View {
                 }
 
                 Text(folder.description ?? "No description.")
-                    .font(.system(size: 11, weight: .regular))
+                    .systemScaledFont(size: 11)
                     .lineLimit(2)
                     .padding(.bottom, 8)
 
                 Text("2 items")
-                    .font(.system(size: 9, weight: .regular))
+                    .systemScaledFont(size: 9)
                     .foregroundColor(.gray)
             }
         }

@@ -35,7 +35,7 @@ struct SignUpScreen: View {
                 VStack(alignment: .leading, spacing: 20) {
                     Button(action: dismiss.callAsFunction) {
                         Image(systemName: "xmark.circle")
-                            .font(.system(size: 24, weight: .semibold))
+                            .systemScaledFont(size: 24, weight: .semibold)
                             .foregroundColor(.accentColor)
                             .padding(.bottom, 10)
                     }

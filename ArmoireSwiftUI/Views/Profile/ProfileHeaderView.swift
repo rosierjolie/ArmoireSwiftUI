@@ -31,12 +31,12 @@ struct ProfileHeaderView: View {
                     .overlay(Circle().stroke(Color(.lightGray), lineWidth: 1))
 
                 Text(user.username)
-                    .font(.system(size: 30, weight: .bold))
+                    .systemScaledFont(size: 30, weight: .bold)
                     .foregroundColor(.primary)
                     .textCase(.lowercase)
 
                 Text(user.email)
-                    .font(.system(size: 20, weight: .medium))
+                    .systemScaledFont(size: 20, weight: .medium)
                     .foregroundColor(.secondary)
                     .textCase(.lowercase)
             }

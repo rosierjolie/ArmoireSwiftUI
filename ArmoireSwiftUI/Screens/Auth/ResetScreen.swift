@@ -18,7 +18,7 @@ struct ResetScreen: View {
             HStack {
                 Button(action: dismiss.callAsFunction) {
                     Image(systemName: "xmark.circle")
-                        .font(.system(size: 24, weight: .semibold))
+                        .systemScaledFont(size: 24, weight: .semibold)
                         .foregroundColor(.accentColor)
                 }
 
@@ -26,7 +26,7 @@ struct ResetScreen: View {
             }
 
             Text("Forgot Password?")
-                .font(.system(size: 30, weight: .semibold))
+                .systemScaledFont(size: 30, weight: .semibold)
 
             Text("Please enter the email you used to register your account. You should recieve password reset instructions in the entered email.")
                 .foregroundColor(.secondary)

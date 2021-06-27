@@ -17,7 +17,7 @@ struct ListFooterView: View {
             Spacer()
 
             Text("\(count) \(itemName)\(count == 1 ? "" : "s")")
-                .font(.system(size: 18, weight: .medium))
+                .systemScaledFont(size: 18, weight: .medium)
                 .foregroundColor(.secondary)
 
             Spacer()

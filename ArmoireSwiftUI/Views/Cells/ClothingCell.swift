@@ -48,34 +48,34 @@ struct ClothingCell: View {
                     VStack(alignment: .leading, spacing: 6) {
                         HStack {
                             Text(clothing.name)
-                                .font(.system(size: 20, weight: .medium))
+                                .systemScaledFont(size: 20, weight: .medium)
                                 .foregroundColor(.accentColor)
 
                             Spacer()
 
                             Image(systemName: "star.fill")
                                 .foregroundColor(clothing.isFavorite ? .yellow : .gray)
-                                .font(.system(size: 20))
+                                .systemScaledFont(size: 20)
                         }
 
                         Text(clothing.brand)
-                            .font(.system(size: 12, weight: .medium))
+                            .systemScaledFont(size: 12, weight: .medium)
 
                         Text(clothing.description ?? "No description.")
+                            .systemScaledFont(size: 11)
                             .fixedSize(horizontal: false, vertical: true)
-                            .font(.system(size: 11, weight: .regular))
                             .lineLimit(2)
                             .padding(.bottom, 11)
 
                         HStack {
                             Text("Quantity: \(clothing.quantity)")
-                                .font(.system(size: 9, weight: .regular))
+                                .systemScaledFont(size: 9)
                                 .foregroundColor(.secondary)
 
                             Spacer()
 
                             Text("Last updated on 2/2/2020")
-                                .font(.system(size: 9, weight: .regular))
+                                .systemScaledFont(size: 9)
                                 .foregroundColor(.secondary)
                         }
                     }

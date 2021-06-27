@@ -53,7 +53,7 @@ struct LoginScreen: View {
                 AMButton(title: "Sign In", action: {})
 
                 Button("Forgot Password?", action: { resetScreenIsVisible = true })
-                    .font(.system(size: 18, weight: .medium))
+                    .systemScaledFont(size: 18, weight: .medium)
                     .foregroundColor(Color(.systemGray))
 
                 Spacer()
@@ -64,7 +64,7 @@ struct LoginScreen: View {
                     Button("Sign up", action: { signUpScreenIsVisible = true })
                         .foregroundColor(Color("AccentColor"))
                 }
-                .font(.system(size: 18, weight: .medium))
+                .systemScaledFont(size: 18, weight: .medium)
             }
             .fullScreenCover(isPresented: $resetScreenIsVisible) { ResetScreen() }
             .fullScreenCover(isPresented: $signUpScreenIsVisible) { SignUpScreen() }

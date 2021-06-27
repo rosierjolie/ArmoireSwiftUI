@@ -18,7 +18,7 @@ struct ClothingSection: View {
                 .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 1)
 
             Text(title)
-                .font(.system(size: 18, weight: .medium))
+                .systemScaledFont(size: 18, weight: .medium)
                 .foregroundColor(.secondary)
                 .padding(.horizontal, 12)
 

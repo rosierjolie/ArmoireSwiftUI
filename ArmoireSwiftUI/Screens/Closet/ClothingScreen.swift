@@ -34,9 +34,13 @@ struct ClothingScreen: View {
     private func getInfoRow(title: String, value: String) -> some View {
         HStack {
             Text(title)
+                .fontWeight(.medium)
+
             Spacer()
+
             Text(value)
         }
+        .systemScaledFont(size: 16)
     }
 
     @ViewBuilder private var clothingImage: some View {
@@ -72,7 +76,7 @@ struct ClothingScreen: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
                     Text(clothing.name)
-                        .font(.system(size: 36, weight: .medium))
+                        .systemScaledFont(size: 36, weight: .medium)
                         .foregroundColor(.accentColor)
 
                     Spacer()
@@ -83,7 +87,7 @@ struct ClothingScreen: View {
                 }
 
                 Text(clothing.brand)
-                    .font(.system(size: 24, weight: .medium))
+                    .systemScaledFont(size: 24, weight: .medium)
             }
             .padding(.horizontal, 12)
 
@@ -91,7 +95,7 @@ struct ClothingScreen: View {
                 ClothingSection(title: "About")
 
                 Text(description)
-                    .font(.system(size: 14, weight: .regular))
+                    .systemScaledFont(size: 14)
                     .padding(.horizontal, 12)
             }
 
@@ -108,7 +112,7 @@ struct ClothingScreen: View {
                     getInfoRow(title: "Material", value: material)
                 }
             }
-            .font(.system(size: 16, weight: .medium))
+            .systemScaledFont(size: 16, weight: .medium)
             .padding(.horizontal, 12)
 
             if let clothingUrl = clothing.url, let url = URL(string: clothingUrl) {
@@ -117,7 +121,7 @@ struct ClothingScreen: View {
                 HStack {
                     Link(clothingUrl, destination: url)
                         .foregroundColor(Color(.systemTeal))
-                        .lineLimit(1)
+//                        .lineLimit(1)
                         .padding(.horizontal, 12)
 
                     Spacer()
@@ -134,9 +138,10 @@ struct ClothingScreen: View {
                 }
             }
             .foregroundColor(Color(.systemGray))
+            .padding(.top, 30)
             .padding(.horizontal, 12)
         }
-        .padding(.bottom, 16)
+        .padding(.bottom, 10)
     }
 
     var body: some View {

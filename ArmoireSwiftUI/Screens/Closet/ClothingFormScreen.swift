@@ -56,7 +56,7 @@ struct ClothingFormScreen: View {
                         Toggle("Mark as favorite?", isOn: $viewModel.markedAsFavorite)
                             .tint(.accentColor)
                     }
-                    .font(.system(size: 20))
+                    .systemScaledFont(size: 20)
 
                     AMButton(title: "\(isOptionalFieldsVisible ? "Hide" : "Show") Optional Fields") {
                         isOptionalFieldsVisible.toggle()
