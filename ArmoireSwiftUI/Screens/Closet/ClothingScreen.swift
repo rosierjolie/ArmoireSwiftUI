@@ -63,6 +63,7 @@ struct ClothingScreen: View {
                     .clipped()
             }
         }
+        .contentShape(Rectangle())
         .onTapGesture(perform: presentImageViewer)
     }
 
