@@ -28,7 +28,7 @@ struct FolderScreen: View {
         .listStyle(.plain)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Dresses")
-        .searchable("Search Dresses", text: $searchText, placement: .navigationBarDrawer)
+        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search \(folder.title)"))
         .sheet(isPresented: $isFolderFormVisible) { FolderFormScreen(folder: folder) }
         .sheet(isPresented: $isClothingFormVisible) { ClothingFormScreen() }
         .toolbar {

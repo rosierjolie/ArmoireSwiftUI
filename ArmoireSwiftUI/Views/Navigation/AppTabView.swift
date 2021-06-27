@@ -24,28 +24,19 @@ struct AppTabView: View {
                 NavigationView {
                     ClosetScreen()
                 }
-                .tabItem {
-                    Label("Closet", systemImage: "folder")
-                        .symbolVariant(selectedTab == .closet ? .fill : .slash)
-                }
+                .tabItem { Label("Closet", systemImage: "folder") }
                 .tag(Tab.closet)
 
                 NavigationView {
                     RunwayScreen()
                 }
-                .tabItem {
-                    Label("Runway", systemImage: "binoculars")
-                        .symbolVariant(selectedTab == .runway ? .fill : .slash)
-                }
+                .tabItem { Label("Runway", systemImage: "binoculars") }
                 .tag(Tab.runway)
 
                 NavigationView {
                     ProfileScreen()
                 }
-                .tabItem {
-                    Label("Profile", systemImage: "person")
-                        .symbolVariant(selectedTab == .profile ? .fill : .slash)
-                }
+                .tabItem { Label("Profile", systemImage: "person") }
                 .tag(Tab.profile)
             }
             .environmentObject(imageViewerStore)

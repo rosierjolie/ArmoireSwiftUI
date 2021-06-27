@@ -10,6 +10,7 @@ import SwiftUI
 
 struct FolderFormScreen: View {
     @Environment(\.dismiss) private var dismiss
+
     @StateObject private var viewModel = FolderFormViewModel()
     @FocusState private var focusedField: Field?
 
@@ -28,11 +29,11 @@ struct FolderFormScreen: View {
         NavigationView {
             VStack(spacing: 20) {
                 AMTextField("Title", text: $viewModel.title)
-                    .focused($focusedField, equals: Field.title)
+                    .focused($focusedField, equals: .title)
                     .submitLabel(.next)
 
                 AMTextField("Enter description", text: $viewModel.description)
-                    .focused($focusedField, equals: Field.description)
+                    .focused($focusedField, equals: .description)
                     .submitLabel(.done)
 
                 Toggle("Mark as favorite?", isOn: $viewModel.isMarkedAsFavorite)

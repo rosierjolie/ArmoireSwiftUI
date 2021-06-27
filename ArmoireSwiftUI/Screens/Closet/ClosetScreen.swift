@@ -24,7 +24,7 @@ struct ClosetScreen: View {
         }
         .listStyle(.plain)
         .navigationTitle("Closet")
-        .searchable("Search Folders", text: $searchText, placement: .navigationBarDrawer)
+        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Folders"))
         .sheet(isPresented: $isFolderFormVisible) { FolderFormScreen() }
         .toolbar {
             Button(action: { isFolderFormVisible = true }) {
