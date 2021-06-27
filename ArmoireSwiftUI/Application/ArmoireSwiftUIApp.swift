@@ -32,7 +32,7 @@ struct ArmoireSwiftUIApp: App {
 
     private func checkAuthenticatedUser() {
         Auth.auth().addStateDidChangeListener { auth, user in
-            if user == nil { userIsLoggedIn = false }
+            if user == nil { userIsLoggedIn = true }
         }
     }
 

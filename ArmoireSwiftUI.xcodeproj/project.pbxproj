@@ -27,6 +27,7 @@
 		C65B53B6267541960096230A /* FolderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B53B5267541960096230A /* FolderScreen.swift */; };
 		C676CB502683D5EA003DFCEF /* SelectedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676CB4F2683D5EA003DFCEF /* SelectedImageView.swift */; };
 		C676CB522683D84C003DFCEF /* SourceTypeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676CB512683D84C003DFCEF /* SourceTypeItem.swift */; };
+		C676CB542683DA97003DFCEF /* ImageViewerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676CB532683DA97003DFCEF /* ImageViewerScreen.swift */; };
 		C68961E8267FB8CA005DDF1D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C68961E7267FB8CA005DDF1D /* FirebaseAuth */; };
 		C68961EA267FB8CA005DDF1D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C68961E9267FB8CA005DDF1D /* FirebaseFirestore */; };
 		C68961EC267FB8CA005DDF1D /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C68961EB267FB8CA005DDF1D /* FirebaseFirestoreSwift-Beta */; };
@@ -81,6 +82,7 @@
 		C65B53B5267541960096230A /* FolderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderScreen.swift; sourceTree = "<group>"; };
 		C676CB4F2683D5EA003DFCEF /* SelectedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageView.swift; sourceTree = "<group>"; };
 		C676CB512683D84C003DFCEF /* SourceTypeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTypeItem.swift; sourceTree = "<group>"; };
+		C676CB532683DA97003DFCEF /* ImageViewerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerScreen.swift; sourceTree = "<group>"; };
 		C68961EF267FB9BE005DDF1D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C69490B526801A8600D24219 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C69490B726801A9700D24219 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				C612FE86267C58D100483638 /* ClothingScreen.swift */,
 				C6FAB31F267D12E3003BDB3D /* FolderFormScreen.swift */,
 				C65B53B5267541960096230A /* FolderScreen.swift */,
+				C676CB532683DA97003DFCEF /* ImageViewerScreen.swift */,
 			);
 			path = Closet;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				C699B923267D4FD10010571D /* FolderFormViewModel.swift in Sources */,
 				C65B5392267537440096230A /* AppTabView.swift in Sources */,
 				C6ED90DB267DA7D200C917D2 /* AccountScreen.swift in Sources */,
+				C676CB542683DA97003DFCEF /* ImageViewerScreen.swift in Sources */,
 				C6C3EF3F2677160800797CE8 /* CanvasToolbar.swift in Sources */,
 				C65B5394267537BF0096230A /* ClosetScreen.swift in Sources */,
 				C6FAB320267D12E3003BDB3D /* FolderFormScreen.swift in Sources */,

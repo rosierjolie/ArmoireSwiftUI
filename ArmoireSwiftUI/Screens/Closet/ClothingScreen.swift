@@ -10,6 +10,8 @@ import Kingfisher
 import SwiftUI
 
 struct ClothingScreen: View {
+    @EnvironmentObject private var imageViewerStore: ImageViewerStore
+
     @State private var isClothingFormVisible = false
     @State private var isLandscapeOrientation = UIDevice.current.orientation.isLandscape
 
@@ -23,6 +25,12 @@ struct ClothingScreen: View {
         isLandscapeOrientation = UIDevice.current.orientation.isLandscape
     }
 
+    private func presentImageViewer() {
+        withAnimation {
+            imageViewerStore.tappedImage = UIImage(named: "Dress Example")
+        }
+    }
+
     private func getInfoRow(title: String, value: String) -> some View {
         HStack {
             Text(title)
@@ -32,27 +40,30 @@ struct ClothingScreen: View {
     }
 
     @ViewBuilder private var clothingImage: some View {
-        if isLandscapeOrientation {
-            KFImage(clothing.imageUrl)
-                .resizable()
-                .loadImmediately()
-                .placeholder { ProgressView("Loading image") }
-                .scaledToFit()
-        } else {
-            KFImage(clothing.imageUrl)
-                .resizable()
-                .loadImmediately()
-                .placeholder {
-                    Image("Placeholder")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 300)
-                        .clipped()
-                }
-                .scaledToFill()
-                .frame(height: 300)
-                .clipped()
+        Group {
+            if isLandscapeOrientation {
+                KFImage(clothing.imageUrl)
+                    .resizable()
+                    .loadImmediately()
+                    .placeholder { ProgressView("Loading image") }
+                    .scaledToFit()
+            } else {
+                KFImage(clothing.imageUrl)
+                    .resizable()
+                    .loadImmediately()
+                    .placeholder {
+                        Image("Placeholder")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 300)
+                            .clipped()
+                    }
+                    .scaledToFill()
+                    .frame(height: 300)
+                    .clipped()
+            }
         }
+        .onTapGesture(perform: presentImageViewer)
     }
 
     private var clothingInformationView: some View {
