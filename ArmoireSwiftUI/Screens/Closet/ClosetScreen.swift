@@ -28,7 +28,7 @@ struct ClosetScreen: View {
         .sheet(isPresented: $isFolderFormVisible) { FolderFormScreen() }
         .toolbar {
             Button(action: { isFolderFormVisible = true }) {
-                Image(systemName: "plus.circle")
+                Label("Create folder", systemImage: "plus.circle")
             }
         }
     }

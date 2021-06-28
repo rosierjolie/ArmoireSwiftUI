@@ -121,7 +121,6 @@ struct ClothingScreen: View {
                 HStack {
                     Link(clothingUrl, destination: url)
                         .foregroundColor(Color(.systemTeal))
-//                        .lineLimit(1)
                         .padding(.horizontal, 12)
 
                     Spacer()
@@ -173,7 +172,7 @@ struct ClothingScreen: View {
         .sheet(isPresented: $isClothingFormVisible) { ClothingFormScreen(clothing: clothing) }
         .toolbar {
             Button(action: { isClothingFormVisible = true }) {
-                Label("Edit clothing item", systemImage: "pencil.circle")
+                Label("Edit clothing", systemImage: "pencil.circle")
             }
         }
     }

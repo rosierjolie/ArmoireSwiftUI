@@ -35,7 +35,6 @@
 		C68961F0267FB9BE005DDF1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68961EF267FB9BE005DDF1D /* GoogleService-Info.plist */; };
 		C69490B626801A8600D24219 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69490B526801A8600D24219 /* LoginViewModel.swift */; };
 		C69490B826801A9700D24219 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69490B726801A9700D24219 /* SignUpViewModel.swift */; };
-		C699B91B267D22490010571D /* AMTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B91A267D22490010571D /* AMTextEditor.swift */; };
 		C699B91E267D305B0010571D /* ClothingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B91D267D305B0010571D /* ClothingFormViewModel.swift */; };
 		C699B921267D4B690010571D /* FormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B920267D4B690010571D /* FormToolbar.swift */; };
 		C699B923267D4FD10010571D /* FolderFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B922267D4FD10010571D /* FolderFormViewModel.swift */; };
@@ -86,7 +85,6 @@
 		C68961EF267FB9BE005DDF1D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C69490B526801A8600D24219 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C69490B726801A9700D24219 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
-		C699B91A267D22490010571D /* AMTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMTextEditor.swift; sourceTree = "<group>"; };
 		C699B91D267D305B0010571D /* ClothingFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingFormViewModel.swift; sourceTree = "<group>"; };
 		C699B920267D4B690010571D /* FormToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormToolbar.swift; sourceTree = "<group>"; };
 		C699B922267D4FD10010571D /* FolderFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFormViewModel.swift; sourceTree = "<group>"; };
@@ -300,7 +298,6 @@
 		C699B91C267D23A70010571D /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
-				C699B91A267D22490010571D /* AMTextEditor.swift */,
 				C6FAB323267D14A6003BDB3D /* AMTextField.swift */,
 				C676CB4F2683D5EA003DFCEF /* SelectedImageView.swift */,
 			);
@@ -458,7 +455,6 @@
 				C612FE87267C58D100483638 /* ClothingScreen.swift in Sources */,
 				C612FE8C267C5D7300483638 /* Clothing.swift in Sources */,
 				C65B5384267536C00096230A /* ArmoireSwiftUIApp.swift in Sources */,
-				C699B91B267D22490010571D /* AMTextEditor.swift in Sources */,
 				C6ED90DD267DAC5300C917D2 /* NavigationCell.swift in Sources */,
 				C6ED90D9267DA6A400C917D2 /* ProfileHeaderView.swift in Sources */,
 				C6C3EF3B267710E800797CE8 /* CanvasScreen.swift in Sources */,

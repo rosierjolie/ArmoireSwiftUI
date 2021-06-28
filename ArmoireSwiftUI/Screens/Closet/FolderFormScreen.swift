@@ -27,21 +27,21 @@ struct FolderFormScreen: View {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                AMTextField("Title", text: $viewModel.title)
-                    .focused($focusedField, equals: .title)
-                    .submitLabel(.next)
+            ScrollView {
+                VStack(spacing: 20) {
+                    AMTextField("Title", text: $viewModel.title)
+                        .focused($focusedField, equals: .title)
+                        .submitLabel(.next)
 
-                AMTextField("Enter description", text: $viewModel.description)
-                    .focused($focusedField, equals: .description)
-                    .submitLabel(.done)
+                    AMTextField("Enter description", text: $viewModel.description)
+                        .focused($focusedField, equals: .description)
+                        .submitLabel(.done)
 
-                Toggle("Mark as favorite?", isOn: $viewModel.isMarkedAsFavorite)
-                    .tint(.accentColor)
-
-                Spacer()
+                    Toggle("Mark as favorite?", isOn: $viewModel.isMarkedAsFavorite)
+                        .tint(.accentColor)
+                }
+                .padding(20)
             }
-            .padding(20)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Create Folder")
             .toolbar {
@@ -49,9 +49,9 @@ struct FolderFormScreen: View {
                 FormKeyboardToolbar(dismissAction: { focusedField = nil })
             }
         }
+        .navigationViewStyle(.stack)
         .onAppear { viewModel.setPreviousValues(folder: folder) }
         .onSubmit(handleSubmit)
-        .navigationViewStyle(.stack)
     }
 }
 
