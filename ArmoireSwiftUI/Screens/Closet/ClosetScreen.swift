@@ -9,22 +9,25 @@
 import SwiftUI
 
 struct ClosetScreen: View {
-    @State private var searchText = ""
-    @State private var isFolderFormVisible = false
+    @StateObject private var viewModel = ClosetViewModel()
 
-    @State private var folders: [Folder] = Array(repeating: .example, count: 4)
+    @State private var isFolderFormVisible = false
 
     var body: some View {
         List {
-            ForEach(folders) { folder in
+            ForEach(viewModel.folders, id: \.id) { folder in
                 FolderCell(folder: folder)
             }
 
-            ListFooterView(itemName: "Folder", count: folders.count)
+            ListFooterView(itemName: "Folder", count: viewModel.folders.count)
         }
         .listStyle(.plain)
         .navigationTitle("Closet")
-        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Folders"))
+        .searchable(
+            text: $viewModel.searchText,
+            placement: .navigationBarDrawer,
+            prompt: Text("Search Folders")
+        )
         .sheet(isPresented: $isFolderFormVisible) { FolderFormScreen() }
         .toolbar {
             Button(action: { isFolderFormVisible = true }) {

@@ -6,6 +6,7 @@
 // Copyright © 2021 Geraldine Turcios. All rights reserved.
 //
 
+import FirebaseAuth
 import SwiftUI
 
 struct ProfileScreen: View {

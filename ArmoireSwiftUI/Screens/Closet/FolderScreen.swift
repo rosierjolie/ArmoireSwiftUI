@@ -9,26 +9,29 @@
 import SwiftUI
 
 struct FolderScreen: View {
-    @State private var searchText = ""
+    @StateObject private var viewModel = FolderViewModel()
+
     @State private var isFolderFormVisible = false
     @State private var isClothingFormVisible = false
-
-    @State private var clothes: [Clothing] = Array(repeating: .example, count: 4)
 
     var folder: Folder
 
     var body: some View {
         List {
-            ForEach(clothes) { clothing in
+            ForEach(viewModel.clothes, id: \.id) { clothing in
                 ClothingCell(clothing: clothing)
             }
 
-            ListFooterView(itemName: "Item", count: clothes.count)
+            ListFooterView(itemName: "Item", count: viewModel.clothes.count)
         }
         .listStyle(.plain)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Dresses")
-        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search \(folder.title)"))
+        .searchable(
+            text: $viewModel.searchText,
+            placement: .navigationBarDrawer,
+            prompt: Text("Search \(folder.title)")
+        )
         .sheet(isPresented: $isFolderFormVisible) { FolderFormScreen(folder: folder) }
         .sheet(isPresented: $isClothingFormVisible) { ClothingFormScreen() }
         .toolbar {

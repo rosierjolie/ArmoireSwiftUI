@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LoginScreen: View {
     @StateObject private var viewModel = LoginViewModel()
+
     @State private var resetScreenIsVisible = false
     @State private var signUpScreenIsVisible = false
     @FocusState private var focusedField: LoginField?
@@ -50,7 +51,7 @@ struct LoginScreen: View {
                     .textContentType(.password)
                     .submitLabel(.go)
 
-                AMButton(title: "Sign In", action: {})
+                AMButton(title: "Sign In", action: viewModel.signInUser)
 
                 Button("Forgot Password?", action: { resetScreenIsVisible = true })
                     .systemScaledFont(size: 18, weight: .medium)
@@ -65,6 +66,13 @@ struct LoginScreen: View {
                         .foregroundColor(Color("AccentColor"))
                 }
                 .systemScaledFont(size: 18, weight: .medium)
+            }
+            .alert(item: $viewModel.alertItem) { alertItem in
+                Alert(
+                    title: alertItem.title,
+                    message: alertItem.message,
+                    dismissButton: .default(alertItem.buttonTitle)
+                )
             }
             .fullScreenCover(isPresented: $resetScreenIsVisible) { ResetScreen() }
             .fullScreenCover(isPresented: $signUpScreenIsVisible) { SignUpScreen() }

@@ -6,10 +6,11 @@
 // Copyright © 2021 Geraldine Turcios. All rights reserved.
 //
 
-import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-struct Clothing: Codable, Identifiable {
-    var id = UUID()
+struct Clothing: Codable {
+    @DocumentID var id: String? = nil
     var imageUrl: URL?
     var name: String
     var brand: String
@@ -22,6 +23,7 @@ struct Clothing: Codable, Identifiable {
     var url: String?
     var dateCreated = Date()
     var dateUpdated: Date? = nil
+    var folder: DocumentReference?
     var userId: String?
 
     static var example: Clothing {

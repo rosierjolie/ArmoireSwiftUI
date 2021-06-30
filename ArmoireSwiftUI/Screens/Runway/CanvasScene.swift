@@ -8,15 +8,6 @@
 
 import SpriteKit
 
-struct ItemNode: Codable {
-    var id: String
-    var imageUrl: String
-    var xPosition: Double
-    var yPosition: Double
-    var zPosition: Double
-    var scale: Double? = nil
-}
-
 protocol CanvasSceneDelegate: AnyObject {
     func didTapBackground()
     func didTapItem(_ node: SKNode)

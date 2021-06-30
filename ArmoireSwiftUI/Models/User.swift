@@ -6,11 +6,11 @@
 // Copyright © 2021 Geraldine Turcios. All rights reserved.
 //
 
+import FirebaseFirestoreSwift
 import Foundation
 
-
-struct User: Codable, Identifiable {
-    var id = UUID()
+struct User: Codable {
+    @DocumentID var id: String? = nil
     var avatarUrl: URL?
     var firstName: String
     var lastName: String
