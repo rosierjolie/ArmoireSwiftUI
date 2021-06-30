@@ -16,13 +16,13 @@ struct ProfileScreen: View {
                     Text("Account")
                 }
 
-                NavigationLink(destination: Text("Notifications")) {
+                NavigationLink(destination: NotificationsScreen()) {
                     Text("Notifications")
                 }
             }
 
             Section {
-                NavigationLink(destination: Text("About")) {
+                NavigationLink(destination: AboutScreen()) {
                     Text("About")
                 }
 

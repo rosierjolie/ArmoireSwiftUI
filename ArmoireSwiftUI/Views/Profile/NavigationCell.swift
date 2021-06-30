@@ -20,7 +20,7 @@ struct NavigationCell<Destination>: View where Destination: View {
     }
 
     var body: some View {
-        NavigationLink(destination: Text("Change Username")) {
+        NavigationLink(destination: destination) {
             HStack {
                 Text(title)
 
@@ -35,7 +35,7 @@ struct NavigationCell<Destination>: View where Destination: View {
 
 struct NavigationCellPreviews: PreviewProvider {
     static var previews: some View {
-        NavigationCell(title: "Username", subtitle: "rosierjolie") {
+        NavigationCell(title: "Username", subtitle: "username123") {
             Text("Hello")
         }
     }
