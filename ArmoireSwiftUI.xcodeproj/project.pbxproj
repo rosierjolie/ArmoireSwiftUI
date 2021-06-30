@@ -25,6 +25,8 @@
 		C65B53B226753D5C0096230A /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B53B126753D5C0096230A /* FolderCell.swift */; };
 		C65B53B426753E920096230A /* ListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B53B326753E920096230A /* ListFooterView.swift */; };
 		C65B53B6267541960096230A /* FolderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B53B5267541960096230A /* FolderScreen.swift */; };
+		C6691234268BFEF600F0D411 /* AMNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6691233268BFEF600F0D411 /* AMNavButton.swift */; };
+		C6691236268C031700F0D411 /* DescriptionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6691235268C031700F0D411 /* DescriptionScreen.swift */; };
 		C676CB502683D5EA003DFCEF /* SelectedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676CB4F2683D5EA003DFCEF /* SelectedImageView.swift */; };
 		C676CB522683D84C003DFCEF /* SourceTypeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676CB512683D84C003DFCEF /* SourceTypeItem.swift */; };
 		C676CB542683DA97003DFCEF /* ImageViewerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676CB532683DA97003DFCEF /* ImageViewerScreen.swift */; };
@@ -35,6 +37,7 @@
 		C68961F0267FB9BE005DDF1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68961EF267FB9BE005DDF1D /* GoogleService-Info.plist */; };
 		C69490B626801A8600D24219 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69490B526801A8600D24219 /* LoginViewModel.swift */; };
 		C69490B826801A9700D24219 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69490B726801A9700D24219 /* SignUpViewModel.swift */; };
+		C698F33B26895F3F004A8640 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = C698F33A26895F3F004A8640 /* Introspect */; };
 		C699B91E267D305B0010571D /* ClothingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B91D267D305B0010571D /* ClothingFormViewModel.swift */; };
 		C699B921267D4B690010571D /* FormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B920267D4B690010571D /* FormToolbar.swift */; };
 		C699B923267D4FD10010571D /* FolderFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B922267D4FD10010571D /* FolderFormViewModel.swift */; };
@@ -79,6 +82,8 @@
 		C65B53B126753D5C0096230A /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
 		C65B53B326753E920096230A /* ListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFooterView.swift; sourceTree = "<group>"; };
 		C65B53B5267541960096230A /* FolderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderScreen.swift; sourceTree = "<group>"; };
+		C6691233268BFEF600F0D411 /* AMNavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMNavButton.swift; sourceTree = "<group>"; };
+		C6691235268C031700F0D411 /* DescriptionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreen.swift; sourceTree = "<group>"; };
 		C676CB4F2683D5EA003DFCEF /* SelectedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageView.swift; sourceTree = "<group>"; };
 		C676CB512683D84C003DFCEF /* SourceTypeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTypeItem.swift; sourceTree = "<group>"; };
 		C676CB532683DA97003DFCEF /* ImageViewerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerScreen.swift; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6F6C07E267E77A600B6D258 /* Kingfisher in Frameworks */,
+				C698F33B26895F3F004A8640 /* Introspect in Frameworks */,
 				C68961EC267FB8CA005DDF1D /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				C68961E8267FB8CA005DDF1D /* FirebaseAuth in Frameworks */,
 				C68961EE267FB8CA005DDF1D /* FirebaseStorage in Frameworks */,
@@ -234,6 +240,7 @@
 				C65B5393267537BF0096230A /* ClosetScreen.swift */,
 				C612FE88267C596200483638 /* ClothingFormScreen.swift */,
 				C612FE86267C58D100483638 /* ClothingScreen.swift */,
+				C6691235268C031700F0D411 /* DescriptionScreen.swift */,
 				C6FAB31F267D12E3003BDB3D /* FolderFormScreen.swift */,
 				C65B53B5267541960096230A /* FolderScreen.swift */,
 				C676CB532683DA97003DFCEF /* ImageViewerScreen.swift */,
@@ -308,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				C6FAB321267D13B8003BDB3D /* AMButton.swift */,
+				C6691233268BFEF600F0D411 /* AMNavButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -381,6 +389,7 @@
 				C68961E9267FB8CA005DDF1D /* FirebaseFirestore */,
 				C68961EB267FB8CA005DDF1D /* FirebaseFirestoreSwift-Beta */,
 				C68961ED267FB8CA005DDF1D /* FirebaseStorage */,
+				C698F33A26895F3F004A8640 /* Introspect */,
 			);
 			productName = ArmoireSwiftUI;
 			productReference = C65B5380267536C00096230A /* ArmoireSwiftUI.app */;
@@ -413,6 +422,7 @@
 			packageReferences = (
 				C6F6C07C267E77A600B6D258 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C68961E6267FB8CA005DDF1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C698F33926895F3F004A8640 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = C65B5381267536C00096230A /* Products */;
 			projectDirPath = "";
@@ -461,6 +471,7 @@
 				C65B53B226753D5C0096230A /* FolderCell.swift in Sources */,
 				C699B91E267D305B0010571D /* ClothingFormViewModel.swift in Sources */,
 				C65B5396267539370096230A /* RunwayScreen.swift in Sources */,
+				C6691234268BFEF600F0D411 /* AMNavButton.swift in Sources */,
 				C612FE8E267C5DF800483638 /* Color+Ext.swift in Sources */,
 				C676CB502683D5EA003DFCEF /* SelectedImageView.swift in Sources */,
 				C699B921267D4B690010571D /* FormToolbar.swift in Sources */,
@@ -469,6 +480,7 @@
 				C6FAB31E267D0A90003BDB3D /* View+Ext.swift in Sources */,
 				C65B5398267539450096230A /* ProfileScreen.swift in Sources */,
 				C65B53AE26753C220096230A /* constants.swift in Sources */,
+				C6691236268C031700F0D411 /* DescriptionScreen.swift in Sources */,
 				C6FAB322267D13B8003BDB3D /* AMButton.swift in Sources */,
 				C699B92D267D67600010571D /* ResetScreen.swift in Sources */,
 				C6FAB324267D14A6003BDB3D /* AMTextField.swift in Sources */,
@@ -700,6 +712,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		C698F33926895F3F004A8640 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
 		C6F6C07C267E77A600B6D258 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -730,6 +750,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C68961E6267FB8CA005DDF1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		C698F33A26895F3F004A8640 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C698F33926895F3F004A8640 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		C6F6C07D267E77A600B6D258 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

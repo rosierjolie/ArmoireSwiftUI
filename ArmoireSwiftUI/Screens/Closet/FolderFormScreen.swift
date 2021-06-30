@@ -6,36 +6,25 @@
 // Copyright © 2021 Geraldine Turcios. All rights reserved.
 //
 
+import Introspect
 import SwiftUI
 
 struct FolderFormScreen: View {
     @Environment(\.dismiss) private var dismiss
-
     @StateObject private var viewModel = FolderFormViewModel()
-    @FocusState private var focusedField: Field?
 
     var folder: Folder?
-
-    private enum Field: Hashable { case title, description }
-
-    private func handleSubmit() {
-        switch focusedField {
-        case .title: focusedField = .description
-        default: focusedField = nil
-        }
-    }
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
                     AMTextField("Title", text: $viewModel.title)
-                        .focused($focusedField, equals: .title)
-                        .submitLabel(.next)
-
-                    AMTextField("Enter description", text: $viewModel.description)
-                        .focused($focusedField, equals: .description)
                         .submitLabel(.done)
+
+                    AMNavButton(title: "Enter Description") {
+                        DescriptionScreen(text: $viewModel.description)
+                    }
 
                     Toggle("Mark as favorite?", isOn: $viewModel.isMarkedAsFavorite)
                         .tint(.accentColor)
@@ -46,12 +35,10 @@ struct FolderFormScreen: View {
             .navigationTitle("Create Folder")
             .toolbar {
                 FormNavigationToolbar(cancel: { dismiss() }, done: viewModel.submitFolder)
-                FormKeyboardToolbar(dismissAction: { focusedField = nil })
             }
         }
         .navigationViewStyle(.stack)
         .onAppear { viewModel.setPreviousValues(folder: folder) }
-        .onSubmit(handleSubmit)
     }
 }
 

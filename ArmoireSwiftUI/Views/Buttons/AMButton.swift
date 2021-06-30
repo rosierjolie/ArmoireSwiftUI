@@ -20,7 +20,7 @@ struct AMButton: View {
                 .padding(.vertical)
                 .background(Color.accentColor)
                 .cornerRadius(10)
-                .foregroundColor(Color(.systemBackground))
+                .foregroundColor(.white)
         }
     }
 }

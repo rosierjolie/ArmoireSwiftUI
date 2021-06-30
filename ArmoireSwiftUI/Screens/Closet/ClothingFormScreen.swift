@@ -15,7 +15,6 @@ struct ClothingFormScreen: View {
     @FocusState private var focusedField: ClothingField?
 
     @State private var isSourceTypeDialogVisible = false
-    @State private var isOptionalFieldsVisible = false
 
     var clothing: Clothing?
 
@@ -58,25 +57,23 @@ struct ClothingFormScreen: View {
                     }
                     .systemScaledFont(size: 20)
 
-                    AMButton(title: "\(isOptionalFieldsVisible ? "Hide" : "Show") Optional Fields") {
-                        isOptionalFieldsVisible.toggle()
+                    AMNavButton(title: "Enter Description") {
+                        DescriptionScreen(text: $viewModel.description)
                     }
 
-                    if isOptionalFieldsVisible {
-                        AMTextField("Size", text: $viewModel.size)
-                            .focused($focusedField, equals: .size)
-                            .submitLabel(.next)
+                    AMTextField("Size (Optional)", text: $viewModel.size)
+                        .focused($focusedField, equals: .size)
+                        .submitLabel(.next)
 
-                        AMTextField("Material", text: $viewModel.material)
-                            .focused($focusedField, equals: .material)
-                            .submitLabel(.next)
+                    AMTextField("Material (Optional)", text: $viewModel.material)
+                        .focused($focusedField, equals: .material)
+                        .submitLabel(.next)
 
-                        AMTextField("URL", text: $viewModel.url)
-                            .focused($focusedField, equals: .url)
-                            .keyboardType(.URL)
-                            .textContentType(.URL)
-                            .submitLabel(.done)
-                    }
+                    AMTextField("URL (Optional)", text: $viewModel.url)
+                        .focused($focusedField, equals: .url)
+                        .keyboardType(.URL)
+                        .textContentType(.URL)
+                        .submitLabel(.done)
                 }
                 .padding(20)
             }
