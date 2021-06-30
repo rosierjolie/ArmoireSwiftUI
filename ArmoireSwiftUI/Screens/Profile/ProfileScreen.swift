@@ -26,7 +26,7 @@ struct ProfileScreen: View {
                     Text("About")
                 }
 
-                NavigationLink(destination: Text("Tip Jar")) {
+                NavigationLink(destination: TipJarScreen()) {
                     Text("Tip Jar")
                 }
             }
@@ -35,6 +35,7 @@ struct ProfileScreen: View {
                 Button("Log Out", role: .destructive, action: {})
             }
         }
+        .navigationBarHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Profile")
     }

@@ -15,6 +15,7 @@
 		C612FE8E267C5DF800483638 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C612FE8D267C5DF800483638 /* Color+Ext.swift */; };
 		C612FE91267C640600483638 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C612FE90267C640600483638 /* Folder.swift */; };
 		C612FE98267C671100483638 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C612FE97267C671100483638 /* FirebaseManager.swift */; };
+		C61F1C45268CEB7F0041F8E4 /* TipJarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F1C44268CEB7F0041F8E4 /* TipJarScreen.swift */; };
 		C65B5384267536C00096230A /* ArmoireSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B5383267536C00096230A /* ArmoireSwiftUIApp.swift */; };
 		C65B5388267536C20096230A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C65B5387267536C20096230A /* Assets.xcassets */; };
 		C65B5392267537440096230A /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B5391267537440096230A /* AppTabView.swift */; };
@@ -70,6 +71,7 @@
 		C612FE8D267C5DF800483638 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		C612FE90267C640600483638 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		C612FE97267C671100483638 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		C61F1C44268CEB7F0041F8E4 /* TipJarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarScreen.swift; sourceTree = "<group>"; };
 		C65B5380267536C00096230A /* ArmoireSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArmoireSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65B5383267536C00096230A /* ArmoireSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmoireSwiftUIApp.swift; sourceTree = "<group>"; };
 		C65B5387267536C20096230A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -175,6 +177,32 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C61F1C46268CF9B80041F8E4 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C69490B526801A8600D24219 /* LoginViewModel.swift */,
+				C69490B726801A9700D24219 /* SignUpViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C61F1C47268CF9BE0041F8E4 /* Closet */ = {
+			isa = PBXGroup;
+			children = (
+				C699B91D267D305B0010571D /* ClothingFormViewModel.swift */,
+				C699B922267D4FD10010571D /* FolderFormViewModel.swift */,
+			);
+			path = Closet;
+			sourceTree = "<group>";
+		};
+		C61F1C48268CF9C30041F8E4 /* Runway */ = {
+			isa = PBXGroup;
+			children = (
+				C6C3EF412677165300797CE8 /* CanvasViewModel.swift */,
+			);
+			path = Runway;
+			sourceTree = "<group>";
+		};
 		C65B5377267536C00096230A = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +281,7 @@
 			children = (
 				C6ED90DA267DA7D200C917D2 /* AccountScreen.swift */,
 				C65B5397267539450096230A /* ProfileScreen.swift */,
+				C61F1C44268CEB7F0041F8E4 /* TipJarScreen.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -349,11 +378,9 @@
 		C6C3EF402677163D00797CE8 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				C6C3EF412677165300797CE8 /* CanvasViewModel.swift */,
-				C699B91D267D305B0010571D /* ClothingFormViewModel.swift */,
-				C699B922267D4FD10010571D /* FolderFormViewModel.swift */,
-				C69490B526801A8600D24219 /* LoginViewModel.swift */,
-				C69490B726801A9700D24219 /* SignUpViewModel.swift */,
+				C61F1C46268CF9B80041F8E4 /* Auth */,
+				C61F1C47268CF9BE0041F8E4 /* Closet */,
+				C61F1C48268CF9C30041F8E4 /* Runway */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -489,6 +516,7 @@
 				C612FE85267C52E100483638 /* ClothingCell.swift in Sources */,
 				C60F95C8267DAEE10073E46E /* User.swift in Sources */,
 				C612FE89267C596200483638 /* ClothingFormScreen.swift in Sources */,
+				C61F1C45268CEB7F0041F8E4 /* TipJarScreen.swift in Sources */,
 				C676CB522683D84C003DFCEF /* SourceTypeItem.swift in Sources */,
 				C612FE91267C640600483638 /* Folder.swift in Sources */,
 				C6B4790D2682F1060078B727 /* ImagePicker.swift in Sources */,
