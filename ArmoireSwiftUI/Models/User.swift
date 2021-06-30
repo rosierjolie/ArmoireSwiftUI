@@ -19,10 +19,11 @@ struct User: Codable {
 
     static var example: User {
         User(
-            firstName: "Geraldine",
-            lastName: "Turcios",
-            username: "rosierjolie",
-            email: "rosierjolie1999@gmail.com"
+            avatarUrl: .init(string: "https://upload.wikimedia.org/wikipedia/commons/b/b5/191125_Taylor_Swift_at_the_2019_American_Music_Awards_%28cropped%29.png"),
+            firstName: "Taylor",
+            lastName: "Swift",
+            username: "taylorswift1989",
+            email: "taylorswift1989@gmail.com"
         )
     }
 }

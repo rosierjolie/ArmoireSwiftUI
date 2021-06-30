@@ -17,7 +17,7 @@ struct ProfileHeaderView: View {
             Spacer()
 
             VStack {
-                KFImage(URL(string: "https://upload.wikimedia.org/wikipedia/commons/b/b5/191125_Taylor_Swift_at_the_2019_American_Music_Awards_%28cropped%29.png"))
+                KFImage(user.avatarUrl)
                     .resizable()
                     .placeholder {
                         Image("Placeholder")

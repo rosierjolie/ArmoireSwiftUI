@@ -35,6 +35,6 @@ struct UsernameScreen: View {
 
 struct UsernameScreenPreviews: PreviewProvider {
     static var previews: some View {
-        UsernameScreen(oldUsername: "username123")
+        UsernameScreen(oldUsername: User.example.username)
     }
 }
