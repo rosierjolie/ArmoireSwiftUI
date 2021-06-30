@@ -6,15 +6,17 @@
 // Copyright © 2021 Geraldine Turcios. All rights reserved.
 //
 
+import AlertToast
 import SwiftUI
 
 struct SignUpScreen: View {
     @Environment(\.dismiss) private var dismiss
 
+    @EnvironmentObject private var authViewModel: AuthViewModel
     @StateObject private var viewModel = SignUpViewModel()
-    @FocusState private var focusedField: SignUpField?
 
     @State private var isSourceTypeDialogVisible = false
+    @FocusState private var focusedField: SignUpField?
 
     private enum SignUpField: Hashable {
         case username, email, password, confirmPassword
@@ -27,6 +29,11 @@ struct SignUpScreen: View {
         case .password: focusedField = .confirmPassword
         default: focusedField = nil
         }
+    }
+
+    private func registerButtonTapped() {
+        focusedField = nil
+        viewModel.registerUser(successCompletion: dismiss.callAsFunction)
     }
 
     var body: some View {
@@ -72,7 +79,7 @@ struct SignUpScreen: View {
                         .textContentType(.oneTimeCode)
                         .submitLabel(.done)
 
-                    AMButton(title: "Register", action: {})
+                    AMButton(title: "Register", action: registerButtonTapped)
 
                     Spacer()
                 }
@@ -98,12 +105,22 @@ struct SignUpScreen: View {
                 ]
             )
         }
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(
+                title: alertItem.title,
+                message: alertItem.message,
+                dismissButton: .default(alertItem.buttonTitle)
+            )
+        }
         .onSubmit(handleSubmit)
         .sheet(item: $viewModel.sourceTypeItem) { sourceTypeItem in
             ImagePicker(
                 sourceType: sourceTypeItem.sourceType,
                 selectedImage: $viewModel.selectedImage
             )
+        }
+        .toast(isPresenting: $viewModel.isLoading) {
+            AlertToast(displayMode: .alert, type: .loading, title: "Creating account")
         }
     }
 }

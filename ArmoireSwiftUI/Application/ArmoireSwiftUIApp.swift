@@ -21,28 +21,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 struct ArmoireSwiftUIApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @Environment(\.scenePhase) private var scenePhase
-    @State private var userIsLoggedIn = false
+
+    @StateObject private var authViewModel = AuthViewModel()
 
     private func handleScenePhaseChange(_ newValue: ScenePhase) {
         switch newValue {
-        case .active: checkAuthenticatedUser()
+        case .active: authViewModel.checkAuthenticatedUser()
         default: break
-        }
-    }
-
-    private func checkAuthenticatedUser() {
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user == nil { userIsLoggedIn = false }
         }
     }
 
     var body: some Scene {
         WindowGroup {
-            if userIsLoggedIn {
-                AppTabView()
-            } else {
-                LoginScreen()
+            Group {
+                if authViewModel.userIsLoggedIn {
+                    AppTabView()
+                } else {
+                    LoginScreen()
+                }
             }
+            .environmentObject(authViewModel)
         }
         .onChange(of: scenePhase, perform: handleScenePhaseChange)
     }

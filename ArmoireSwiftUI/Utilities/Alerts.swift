@@ -14,6 +14,12 @@ struct AlertItem: Identifiable {
     var message: Text
     var buttonTitle: Text
 
+    init(errorMessage: String) {
+        self.title = Text("Error")
+        self.message = Text(errorMessage)
+        self.buttonTitle = Text("Okay")
+    }
+
     init(title: String, message: String, buttonTitle: String) {
         self.title = Text(title)
         self.message = Text(message)

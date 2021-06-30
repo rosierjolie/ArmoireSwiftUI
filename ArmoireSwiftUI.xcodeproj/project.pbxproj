@@ -28,6 +28,8 @@
 		C61F1C5C268D0CBA0041F8E4 /* ClosetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F1C5B268D0CBA0041F8E4 /* ClosetViewModel.swift */; };
 		C61F1C5E268D0D4F0041F8E4 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F1C5D268D0D4F0041F8E4 /* FolderViewModel.swift */; };
 		C61F1C60268D0FD40041F8E4 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F1C5F268D0FD40041F8E4 /* Alerts.swift */; };
+		C61F1C62268D15E50041F8E4 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F1C61268D15E50041F8E4 /* AuthViewModel.swift */; };
+		C61F1C65268D16460041F8E4 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C61F1C64268D16460041F8E4 /* AlertToast */; };
 		C65B5384267536C00096230A /* ArmoireSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B5383267536C00096230A /* ArmoireSwiftUIApp.swift */; };
 		C65B5388267536C20096230A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C65B5387267536C20096230A /* Assets.xcassets */; };
 		C65B5392267537440096230A /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B5391267537440096230A /* AppTabView.swift */; };
@@ -96,6 +98,7 @@
 		C61F1C5B268D0CBA0041F8E4 /* ClosetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewModel.swift; sourceTree = "<group>"; };
 		C61F1C5D268D0D4F0041F8E4 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
 		C61F1C5F268D0FD40041F8E4 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		C61F1C61268D15E50041F8E4 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		C65B5380267536C00096230A /* ArmoireSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArmoireSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65B5383267536C00096230A /* ArmoireSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmoireSwiftUIApp.swift; sourceTree = "<group>"; };
 		C65B5387267536C20096230A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6F6C07E267E77A600B6D258 /* Kingfisher in Frameworks */,
+				C61F1C65268D16460041F8E4 /* AlertToast in Frameworks */,
 				C698F33B26895F3F004A8640 /* Introspect in Frameworks */,
 				C68961EC267FB8CA005DDF1D /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				C68961E8267FB8CA005DDF1D /* FirebaseAuth in Frameworks */,
@@ -206,6 +210,7 @@
 		C61F1C46268CF9B80041F8E4 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				C61F1C61268D15E50041F8E4 /* AuthViewModel.swift */,
 				C69490B526801A8600D24219 /* LoginViewModel.swift */,
 				C69490B726801A9700D24219 /* SignUpViewModel.swift */,
 			);
@@ -453,6 +458,7 @@
 				C68961EB267FB8CA005DDF1D /* FirebaseFirestoreSwift-Beta */,
 				C68961ED267FB8CA005DDF1D /* FirebaseStorage */,
 				C698F33A26895F3F004A8640 /* Introspect */,
+				C61F1C64268D16460041F8E4 /* AlertToast */,
 			);
 			productName = ArmoireSwiftUI;
 			productReference = C65B5380267536C00096230A /* ArmoireSwiftUI.app */;
@@ -486,6 +492,7 @@
 				C6F6C07C267E77A600B6D258 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C68961E6267FB8CA005DDF1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C698F33926895F3F004A8640 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				C61F1C63268D16450041F8E4 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = C65B5381267536C00096230A /* Products */;
 			projectDirPath = "";
@@ -537,6 +544,7 @@
 				C6ED90DD267DAC5300C917D2 /* NavigationCell.swift in Sources */,
 				C6ED90D9267DA6A400C917D2 /* ProfileHeaderView.swift in Sources */,
 				C61F1C56268D0B460041F8E4 /* AMError.swift in Sources */,
+				C61F1C62268D15E50041F8E4 /* AuthViewModel.swift in Sources */,
 				C6C3EF3B267710E800797CE8 /* CanvasScreen.swift in Sources */,
 				C61F1C50268D033E0041F8E4 /* PasswordScreen.swift in Sources */,
 				C65B53B226753D5C0096230A /* FolderCell.swift in Sources */,
@@ -780,6 +788,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C61F1C63268D16450041F8E4 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		C68961E6267FB8CA005DDF1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -807,6 +823,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C61F1C64268D16460041F8E4 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C61F1C63268D16450041F8E4 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
 		C68961E7267FB8CA005DDF1D /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C68961E6267FB8CA005DDF1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

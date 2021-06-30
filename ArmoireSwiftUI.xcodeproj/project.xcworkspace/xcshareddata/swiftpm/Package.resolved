@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "AlertToast",
+        "repositoryURL": "https://github.com/elai950/AlertToast",
+        "state": {
+          "branch": null,
+          "revision": "0a6f9182ce19ccd267f7d022ebbc9ae3952f4012",
+          "version": "1.2.9"
+        }
+      },
+      {
         "package": "boringssl-SwiftPM",
         "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
         "state": {

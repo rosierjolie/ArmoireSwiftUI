@@ -6,9 +6,11 @@
 // Copyright © 2021 Geraldine Turcios. All rights reserved.
 //
 
+import AlertToast
 import SwiftUI
 
 struct LoginScreen: View {
+    @EnvironmentObject private var authViewModel: AuthViewModel
     @StateObject private var viewModel = LoginViewModel()
 
     @State private var resetScreenIsVisible = false
@@ -22,6 +24,11 @@ struct LoginScreen: View {
         case .email: focusedField = .password
         default: focusedField = nil
         }
+    }
+
+    private func signInButtonTapped() {
+        focusedField = nil
+        viewModel.signInUser { authViewModel.userIsLoggedIn = true }
     }
 
     var body: some View {
@@ -51,7 +58,7 @@ struct LoginScreen: View {
                     .textContentType(.password)
                     .submitLabel(.go)
 
-                AMButton(title: "Sign In", action: viewModel.signInUser)
+                AMButton(title: "Sign In", action: signInButtonTapped)
 
                 Button("Forgot Password?", action: { resetScreenIsVisible = true })
                     .systemScaledFont(size: 18, weight: .medium)
@@ -80,6 +87,9 @@ struct LoginScreen: View {
             .onSubmit(handleSubmit)
             .padding(.vertical, 30)
             .padding(.horizontal, 20)
+            .toast(isPresenting: $viewModel.isLoading) {
+                AlertToast(displayMode: .alert, type: .loading, title: "Please wait")
+            }
             .toolbar { FormKeyboardToolbar(dismissAction: { focusedField = nil }) }
         }
         .navigationViewStyle(.stack)
