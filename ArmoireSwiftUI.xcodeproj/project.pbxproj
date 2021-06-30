@@ -52,7 +52,6 @@
 		C68961F0267FB9BE005DDF1D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68961EF267FB9BE005DDF1D /* GoogleService-Info.plist */; };
 		C69490B626801A8600D24219 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69490B526801A8600D24219 /* LoginViewModel.swift */; };
 		C69490B826801A9700D24219 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69490B726801A9700D24219 /* SignUpViewModel.swift */; };
-		C698F33B26895F3F004A8640 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = C698F33A26895F3F004A8640 /* Introspect */; };
 		C699B91E267D305B0010571D /* ClothingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B91D267D305B0010571D /* ClothingFormViewModel.swift */; };
 		C699B921267D4B690010571D /* FormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B920267D4B690010571D /* FormToolbar.swift */; };
 		C699B923267D4FD10010571D /* FolderFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B922267D4FD10010571D /* FolderFormViewModel.swift */; };
@@ -148,7 +147,6 @@
 			files = (
 				C6F6C07E267E77A600B6D258 /* Kingfisher in Frameworks */,
 				C61F1C65268D16460041F8E4 /* AlertToast in Frameworks */,
-				C698F33B26895F3F004A8640 /* Introspect in Frameworks */,
 				C68961EC267FB8CA005DDF1D /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				C68961E8267FB8CA005DDF1D /* FirebaseAuth in Frameworks */,
 				C68961EE267FB8CA005DDF1D /* FirebaseStorage in Frameworks */,
@@ -457,7 +455,6 @@
 				C68961E9267FB8CA005DDF1D /* FirebaseFirestore */,
 				C68961EB267FB8CA005DDF1D /* FirebaseFirestoreSwift-Beta */,
 				C68961ED267FB8CA005DDF1D /* FirebaseStorage */,
-				C698F33A26895F3F004A8640 /* Introspect */,
 				C61F1C64268D16460041F8E4 /* AlertToast */,
 			);
 			productName = ArmoireSwiftUI;
@@ -491,7 +488,6 @@
 			packageReferences = (
 				C6F6C07C267E77A600B6D258 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C68961E6267FB8CA005DDF1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				C698F33926895F3F004A8640 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				C61F1C63268D16450041F8E4 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = C65B5381267536C00096230A /* Products */;
@@ -804,14 +800,6 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		C698F33926895F3F004A8640 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
 		C6F6C07C267E77A600B6D258 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -847,11 +835,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C68961E6267FB8CA005DDF1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
-		};
-		C698F33A26895F3F004A8640 /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C698F33926895F3F004A8640 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
 		};
 		C6F6C07D267E77A600B6D258 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
