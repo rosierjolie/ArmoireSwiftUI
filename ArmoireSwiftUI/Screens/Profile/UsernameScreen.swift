@@ -9,16 +9,32 @@
 import SwiftUI
 
 struct UsernameScreen: View {
+    @State private var username = ""
+
+    var oldUsername: String
+
     var body: some View {
         VStack {
-            Text("Change Username Screen")
+            AMTextField("@Username", text: $username)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .submitLabel(.done)
+
+            Spacer()
         }
+        .padding([.top, .horizontal], 20)
         .navigationTitle("Change Username")
+        .onAppear { username = oldUsername }
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Save", action: {})
+            }
+        }
     }
 }
 
 struct UsernameScreenPreviews: PreviewProvider {
     static var previews: some View {
-        UsernameScreen()
+        UsernameScreen(oldUsername: "username123")
     }
 }

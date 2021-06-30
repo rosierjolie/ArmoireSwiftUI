@@ -38,12 +38,12 @@ struct AccountScreen: View {
             }
 
             Section {
-                NavigationCell(title: "Username", subtitle: "rosierjolie") {
-                    UsernameScreen()
+                NavigationCell(title: "Username", subtitle: "username123") {
+                    UsernameScreen(oldUsername: "username123")
                 }
 
                 NavigationCell(title: "Email", subtitle: "rosierjolie@gmail.com") {
-                    EmailScreen()
+                    EmailScreen(oldEmail: "rosierjolie@gmail.com")
                 }
 
                 NavigationLink("Password", destination: PasswordScreen())
