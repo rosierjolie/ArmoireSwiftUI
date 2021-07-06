@@ -26,12 +26,11 @@ struct FolderScreen: View {
         }
         .listStyle(.plain)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Dresses")
-        .searchable(
-            text: $viewModel.searchText,
-            placement: .navigationBarDrawer,
-            prompt: Text("Search \(folder.title)")
-        )
+        // TODO: Fix navigation title not updating when folder is edited
+        .navigationTitle(folder.title)
+        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer) {
+            Text("Search \(folder.title)")
+        }
         .sheet(isPresented: $isFolderFormVisible) { FolderFormScreen(folder: folder) }
         .sheet(isPresented: $isClothingFormVisible) { ClothingFormScreen() }
         .toolbar {

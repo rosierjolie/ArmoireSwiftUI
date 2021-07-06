@@ -11,6 +11,8 @@ import SwiftUI
 struct FolderCell: View {
     @Environment(\.colorScheme) private var colorScheme
 
+    @EnvironmentObject private var closetViewModel: ClosetViewModel
+
     var folder: Folder
 
     private var rowBackground: some View {
@@ -48,7 +50,7 @@ struct FolderCell: View {
                     .lineLimit(2)
                     .padding(.bottom, 8)
 
-                Text("2 items")
+                Text(folder.itemCount == 0 ? "Empty folder" : "\(folder.itemCount) items")
                     .systemScaledFont(size: 9)
                     .foregroundColor(.gray)
             }
@@ -56,15 +58,20 @@ struct FolderCell: View {
         .listRowBackground(rowBackground)
         .listRowInsets(.init(top: 10, leading: 20, bottom: 11, trailing: 20))
         .listRowSeparator(.hidden)
-        .swipeActions(edge: .leading, allowsFullSwipe: true) {
-            Button(action: {}) {
+        .swipeActions(edge: .leading) {
+            Button {
+                closetViewModel.toggleFavorite(for: folder)
+            } label: {
                 Label(folder.isFavorite ? "Unfavorite" : "Favorite", systemImage: "star")
                     .symbolVariant(folder.isFavorite ? .slash : .fill)
             }
             .tint(folder.isFavorite ? .gray : .yellow)
         }
-        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-            Button(role: .destructive, action: {}) {
+        .swipeActions(edge: .trailing) {
+            Button(role: .destructive) {
+                // TODO: Add proper delete animation to cell
+                closetViewModel.delete(folder)
+            } label: {
                 Label("Delete", systemImage: "trash")
             }
         }

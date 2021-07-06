@@ -68,6 +68,10 @@ final class FirebaseManager {
         let clothesRef = db.collection("clothes")
         let storageRef = storage.reference()
 
+        folderRef.updateData([
+            "itemCount": FieldValue.increment(Int64(1))
+        ])
+
         let clothingImageRef = storageRef.child("images/\(clothing.name.blobCase.lowercased()).jpg")
 
         guard let data = image.jpegData(compressionQuality: 0.8) else {
@@ -244,8 +248,14 @@ final class FirebaseManager {
         uploadTask.resume()
     }
 
-    func deleteClothing(_ clothing: Clothing, errorHandler: @escaping (AMError) -> Void) {
+    func deleteClothing(_ clothing: Clothing, folderId: String, errorHandler: @escaping (AMError) -> Void) {
         guard let id = clothing.id else { return }
+        let folderRef = db.collection("folders").document(folderId)
+
+        folderRef.updateData([
+            "itemCount": FieldValue.increment(Int64(-1))
+        ])
+
         deleteClothingImage(for: clothing, errorHandler: errorHandler)
 
         db.collection("clothes").document(id).delete { error in
@@ -277,6 +287,7 @@ final class FirebaseManager {
             title: folder.title,
             description: folder.description ?? nil,
             isFavorite: folder.isFavorite,
+            itemCount: folder.itemCount,
             userId: uid
         )
 
@@ -327,13 +338,15 @@ final class FirebaseManager {
             folderRef.updateData([
                 "title": folder.title,
                 "description": description,
-                "isFavorite": folder.isFavorite
+                "isFavorite": folder.isFavorite,
+                "itemCount": folder.itemCount
             ])
         } else {
             folderRef.updateData([
                 "title": folder.title,
                 "description": FieldValue.delete(),
-                "isFavorite": folder.isFavorite
+                "isFavorite": folder.isFavorite,
+                "itemCount": folder.itemCount
             ])
         }
     }
@@ -346,7 +359,7 @@ final class FirebaseManager {
             guard let self = self else { return }
 
             switch result {
-            case .success(let clothes): self.deleteClothesForFolder(clothes, errorHandler: errorHandler)
+            case .success(let clothes): self.deleteClothesForFolder(clothes, folderId: folderId, errorHandler: errorHandler)
             case .failure(let error): errorHandler(error)
             }
         }
@@ -358,7 +371,7 @@ final class FirebaseManager {
         }
     }
 
-    private func deleteClothesForFolder(_ clothes: [Clothing], errorHandler: @escaping (AMError) -> Void) {
+    private func deleteClothesForFolder(_ clothes: [Clothing], folderId: String, errorHandler: @escaping (AMError) -> Void) {
         for clothing in clothes {
             guard let id = clothing.id else { break }
             let clothingRef = db.collection("clothes").document(id)
@@ -375,7 +388,7 @@ final class FirebaseManager {
                 do {
                     guard let clothing = try document.data(as: Clothing.self) else { return }
 
-                    self.deleteClothing(clothing) { error in
+                    self.deleteClothing(clothing, folderId: folderId) { error in
                         errorHandler(.failedToDeleteClothing)
                     }
                 } catch {

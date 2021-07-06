@@ -14,21 +14,30 @@ struct ClosetScreen: View {
     @State private var isFolderFormVisible = false
 
     var body: some View {
-        List {
-            ForEach(viewModel.folders, id: \.id) { folder in
-                FolderCell(folder: folder)
-            }
+        Group {
+            if viewModel.isLoading {
+                ProgressView("Loading folders")
+            } else {
+                List {
+                    ForEach(viewModel.folders, id: \.id) { folder in
+                        FolderCell(folder: folder)
+                            .environmentObject(viewModel)
+                    }
 
-            ListFooterView(itemName: "Folder", count: viewModel.folders.count)
+                    ListFooterView(itemName: "Folder", count: viewModel.folders.count)
+                }
+                .listStyle(.plain)
+            }
         }
-        .listStyle(.plain)
         .navigationTitle("Closet")
-        .searchable(
-            text: $viewModel.searchText,
-            placement: .navigationBarDrawer,
-            prompt: Text("Search Folders")
-        )
-        .sheet(isPresented: $isFolderFormVisible) { FolderFormScreen() }
+        .onAppear { viewModel.fetchFolders(withLoading: true) }
+        .refreshable(action: viewModel.fetchFolders)
+        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer) {
+            Text("Search Folders")
+        }
+        .sheet(isPresented: $isFolderFormVisible, onDismiss: viewModel.fetchFolders) {
+            FolderFormScreen()
+        }
         .toolbar {
             Button(action: { isFolderFormVisible = true }) {
                 Label("Create folder", systemImage: "plus.circle")

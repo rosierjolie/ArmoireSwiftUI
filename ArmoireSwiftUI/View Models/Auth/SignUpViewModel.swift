@@ -21,7 +21,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var alertItem: AlertItem?
     @Published var isLoading = false
 
-    func registerUser(successCompletion: @escaping () -> Void) {
+    func registerUser(completion: @escaping () -> Void) {
         if username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             alertItem = AlertItem(errorMessage: "The username field is empty. Please enter a username")
             return
@@ -37,6 +37,7 @@ final class SignUpViewModel: ObservableObject {
 
             if let error = error {
                 self.alertItem = AlertItem(errorMessage: error.localizedDescription)
+                self.isLoading = false
                 return
             }
 
@@ -55,13 +56,14 @@ final class SignUpViewModel: ObservableObject {
             changeRequest?.commitChanges { error in
                 if let error = error {
                     self.alertItem = AlertItem(errorMessage: error.localizedDescription)
+                    self.isLoading = false
                     return
                 }
             }
 
             self.isLoading = false
 
-            successCompletion()
+            completion()
         }
     }
 }

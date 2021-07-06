@@ -78,7 +78,7 @@ struct ClothingFormScreen: View {
                 .padding(20)
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Edit Clothing")
+            .navigationTitle("\(clothing == nil ? "Add" : "Edit") Clothing")
             .toolbar {
                 FormNavigationToolbar(cancel: { dismiss() }, done: viewModel.submitClothing)
                 FormKeyboardToolbar(dismissAction: { focusedField = nil })

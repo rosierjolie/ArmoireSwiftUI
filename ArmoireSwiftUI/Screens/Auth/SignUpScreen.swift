@@ -33,7 +33,7 @@ struct SignUpScreen: View {
 
     private func registerButtonTapped() {
         focusedField = nil
-        viewModel.registerUser(successCompletion: dismiss.callAsFunction)
+        viewModel.registerUser(completion: dismiss.callAsFunction)
     }
 
     var body: some View {

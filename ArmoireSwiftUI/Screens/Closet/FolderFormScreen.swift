@@ -10,9 +10,16 @@ import SwiftUI
 
 struct FolderFormScreen: View {
     @Environment(\.dismiss) private var dismiss
+
     @StateObject private var viewModel = FolderFormViewModel()
 
     var folder: Folder?
+    var didUpdateTitle: ((_ title: String) -> Void)?
+
+    private func doneButtonTapped() {
+        viewModel.submitFolder(completion: {})
+        dismiss()
+    }
 
     var body: some View {
         NavigationView {
@@ -31,9 +38,9 @@ struct FolderFormScreen: View {
                 .padding(20)
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Create Folder")
+            .navigationTitle("\(folder == nil ? "Create" : "Edit") Folder")
             .toolbar {
-                FormNavigationToolbar(cancel: { dismiss() }, done: viewModel.submitFolder)
+                FormNavigationToolbar(cancel: { dismiss() }, done: doneButtonTapped)
             }
         }
         .navigationViewStyle(.stack)

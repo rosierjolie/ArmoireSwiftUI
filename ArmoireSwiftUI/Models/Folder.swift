@@ -14,13 +14,15 @@ struct Folder: Codable {
     var title: String
     var description: String?
     var isFavorite: Bool
+    var itemCount: Int
     var userId: String?
 
     static var example: Folder {
         Folder(
             title: "Dresses",
             description: "Collection of formal wear.",
-            isFavorite: true
+            isFavorite: true,
+            itemCount: 1
         )
     }
 }
