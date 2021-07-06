@@ -30,7 +30,7 @@ struct ClosetScreen: View {
             }
         }
         .navigationTitle("Closet")
-        .onAppear { viewModel.fetchFolders(withLoading: true) }
+        .onAppear(perform: viewModel.fetchFolders)
         .refreshable(action: viewModel.fetchFolders)
         .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer) {
             Text("Search Folders")

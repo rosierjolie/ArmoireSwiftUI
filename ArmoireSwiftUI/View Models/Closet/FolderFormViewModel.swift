@@ -27,7 +27,7 @@ final class FolderFormViewModel: ObservableObject {
         selectedFolder = folder
     }
 
-    func submitFolder(completion: @escaping () -> Void) {
+    func submitFolder(completed: @escaping (_ folder: Folder) -> Void) {
         if title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             alertItem = AlertItem(errorMessage: "The title text field must not be empty.")
         } else {
@@ -39,13 +39,8 @@ final class FolderFormViewModel: ObservableObject {
                 updatedFolder.description = description
                 updatedFolder.isFavorite = isMarkedAsFavorite
 
-                FirebaseManager.shared.updateFolder(updatedFolder) { [weak self] result in
-                    guard let self = self else { return }
-
-                    switch result {
-                    case .success(_): completion()
-                    case .failure(let error): self.alertItem = AlertItem(errorMessage: error.localizedDescription)
-                    }
+                FirebaseManager.shared.updateFolder(updatedFolder) { folder in
+                    completed(folder)
                 }
             } else {
                 let description = description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : description
@@ -55,7 +50,7 @@ final class FolderFormViewModel: ObservableObject {
                     guard let self = self else { return }
 
                     switch result {
-                    case .success(_): completion()
+                    case .success(let folder): completed(folder)
                     case .failure(let error): self.alertItem = AlertItem(errorMessage: error.localizedDescription)
                     }
                 }

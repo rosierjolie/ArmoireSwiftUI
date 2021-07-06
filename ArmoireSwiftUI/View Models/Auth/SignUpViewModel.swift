@@ -21,7 +21,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var alertItem: AlertItem?
     @Published var isLoading = false
 
-    func registerUser(completion: @escaping () -> Void) {
+    func registerUser(completed: @escaping () -> Void) {
         if username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             alertItem = AlertItem(errorMessage: "The username field is empty. Please enter a username")
             return
@@ -63,7 +63,7 @@ final class SignUpViewModel: ObservableObject {
 
             self.isLoading = false
 
-            completion()
+            completed()
         }
     }
 }

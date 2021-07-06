@@ -11,10 +11,13 @@ import SwiftUI
 struct FolderScreen: View {
     @StateObject private var viewModel = FolderViewModel()
 
+    @State private var folder = Folder()
     @State private var isFolderFormVisible = false
     @State private var isClothingFormVisible = false
 
-    var folder: Folder
+    init(folder: Folder) {
+        _folder = State(initialValue: folder)
+    }
 
     var body: some View {
         List {
@@ -26,12 +29,15 @@ struct FolderScreen: View {
         }
         .listStyle(.plain)
         .navigationBarTitleDisplayMode(.inline)
-        // TODO: Fix navigation title not updating when folder is edited
         .navigationTitle(folder.title)
         .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer) {
             Text("Search \(folder.title)")
         }
-        .sheet(isPresented: $isFolderFormVisible) { FolderFormScreen(folder: folder) }
+        .sheet(isPresented: $isFolderFormVisible) {
+            FolderFormScreen(folder: folder) { folder in
+                self.folder = folder
+            }
+        }
         .sheet(isPresented: $isClothingFormVisible) { ClothingFormScreen() }
         .toolbar {
             Menu {

@@ -14,10 +14,10 @@ struct FolderFormScreen: View {
     @StateObject private var viewModel = FolderFormViewModel()
 
     var folder: Folder?
-    var didUpdateTitle: ((_ title: String) -> Void)?
+    var didUpdateFolder: ((_ folder: Folder) -> Void)?
 
     private func doneButtonTapped() {
-        viewModel.submitFolder(completion: {})
+        viewModel.submitFolder { didUpdateFolder?($0) }
         dismiss()
     }
 
@@ -40,7 +40,7 @@ struct FolderFormScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("\(folder == nil ? "Create" : "Edit") Folder")
             .toolbar {
-                FormNavigationToolbar(cancel: { dismiss() }, done: doneButtonTapped)
+                FormNavigationToolbar(cancel: dismiss.callAsFunction, done: doneButtonTapped)
             }
         }
         .navigationViewStyle(.stack)

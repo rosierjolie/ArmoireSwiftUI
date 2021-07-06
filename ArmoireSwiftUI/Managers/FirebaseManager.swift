@@ -330,7 +330,7 @@ final class FirebaseManager {
         }
     }
 
-    func updateFolder(_ folder: Folder, completed: @escaping (Result<Folder, AMError>) -> Void) {
+    func updateFolder(_ folder: Folder, completed: ((Folder) -> Void)? = nil) {
         guard let folderId = folder.id else { return }
         let folderRef = db.collection("folders").document(folderId)
 
@@ -349,6 +349,8 @@ final class FirebaseManager {
                 "itemCount": folder.itemCount
             ])
         }
+
+        completed?(folder)
     }
 
     func deleteFolder(_ folder: Folder, errorHandler: @escaping (AMError) ->Void) {

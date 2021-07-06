@@ -15,7 +15,7 @@ final class LoginViewModel: ObservableObject {
     @Published var alertItem: AlertItem?
     @Published var isLoading = false
 
-    func signInUser(completion: @escaping () -> Void) {
+    func signInUser(completed: @escaping () -> Void) {
         isLoading = true
 
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
@@ -26,7 +26,7 @@ final class LoginViewModel: ObservableObject {
             if let error = error {
                 self.alertItem = AlertItem(title: "Error", message: error.localizedDescription, buttonTitle: "Okay")
             } else {
-                completion()
+                completed()
             }
         }
     }

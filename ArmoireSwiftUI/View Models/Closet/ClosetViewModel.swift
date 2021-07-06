@@ -47,25 +47,20 @@ final class ClosetViewModel: ObservableObject {
                 folders.append(updatedFolder)
                 folders.sort { $0.title < $1.title }
 
-                FirebaseManager.shared.updateFolder(updatedFolder) { [weak self] result in
-                    guard let self = self else { return }
-
-                    switch result {
-                    case .success(_): break
-                    case .failure(let error): self.alertItem = AlertItem(errorMessage: error.localizedDescription)
-                    }
-                }
+                FirebaseManager.shared.updateFolder(updatedFolder)
             }
         }
     }
 
     func delete(_ selectedFolder: Folder) {
-        for folder in folders {
+        for (index, folder) in folders.enumerated() {
             if folder.id == selectedFolder.id {
                 FirebaseManager.shared.deleteFolder(folder) { [weak self] error in
                     guard let self = self else { return }
                     self.alertItem = AlertItem(errorMessage: error.localizedDescription)
                 }
+
+                folders.remove(at: index)
             }
         }
     }

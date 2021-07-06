@@ -17,6 +17,13 @@ struct Folder: Codable {
     var itemCount: Int
     var userId: String?
 
+    init(title: String = "", description: String? = "", isFavorite: Bool = false, itemCount: Int = 0, userId: String? = "") {
+        self.title = title
+        self.description = description
+        self.isFavorite = isFavorite
+        self.itemCount = 0
+    }
+
     static var example: Folder {
         Folder(
             title: "Dresses",
