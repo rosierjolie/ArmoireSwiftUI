@@ -64,6 +64,7 @@
 		C6C3EF3D2677117700797CE8 /* CanvasScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF3C2677117700797CE8 /* CanvasScene.swift */; };
 		C6C3EF3F2677160800797CE8 /* CanvasToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF3E2677160800797CE8 /* CanvasToolbar.swift */; };
 		C6C3EF422677165300797CE8 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3EF412677165300797CE8 /* CanvasViewModel.swift */; };
+		C6CB44AD2698E9370076D89D /* RunwayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CB44AC2698E9370076D89D /* RunwayCell.swift */; };
 		C6ED90D9267DA6A400C917D2 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */; };
 		C6ED90DB267DA7D200C917D2 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED90DA267DA7D200C917D2 /* AccountScreen.swift */; };
 		C6ED90DD267DAC5300C917D2 /* NavigationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED90DC267DAC5300C917D2 /* NavigationCell.swift */; };
@@ -130,6 +131,7 @@
 		C6C3EF3C2677117700797CE8 /* CanvasScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasScene.swift; sourceTree = "<group>"; };
 		C6C3EF3E2677160800797CE8 /* CanvasToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolbar.swift; sourceTree = "<group>"; };
 		C6C3EF412677165300797CE8 /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
+		C6CB44AC2698E9370076D89D /* RunwayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunwayCell.swift; sourceTree = "<group>"; };
 		C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		C6ED90DA267DA7D200C917D2 /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		C6ED90DC267DAC5300C917D2 /* NavigationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCell.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 			children = (
 				C612FE84267C52E100483638 /* ClothingCell.swift */,
 				C65B53B126753D5C0096230A /* FolderCell.swift */,
+				C6CB44AC2698E9370076D89D /* RunwayCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				C612FE85267C52E100483638 /* ClothingCell.swift in Sources */,
 				C60F95C8267DAEE10073E46E /* User.swift in Sources */,
 				C612FE89267C596200483638 /* ClothingFormScreen.swift in Sources */,
+				C6CB44AD2698E9370076D89D /* RunwayCell.swift in Sources */,
 				C61F1C45268CEB7F0041F8E4 /* TipJarScreen.swift in Sources */,
 				C676CB522683D84C003DFCEF /* SourceTypeItem.swift in Sources */,
 				C61F1C4C268D03150041F8E4 /* EmailScreen.swift in Sources */,

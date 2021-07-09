@@ -27,4 +27,8 @@ struct Runway: Codable {
     var dateCreated = Date()
     var dateUpdated: Date? = nil
     var userId: String?
+
+    static var example: Runway {
+        Runway(title: "Evening Outfit 2021", isFavorite: true, isSharing: true)
+    }
 }
