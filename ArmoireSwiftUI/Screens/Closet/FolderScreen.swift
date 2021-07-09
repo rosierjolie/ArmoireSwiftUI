@@ -9,43 +9,53 @@
 import SwiftUI
 
 struct FolderScreen: View {
-    @StateObject private var viewModel = FolderViewModel()
-
-    @State private var folder = Folder()
-    @State private var isFolderFormVisible = false
-    @State private var isClothingFormVisible = false
+    @StateObject private var viewModel: FolderViewModel
 
     init(folder: Folder) {
-        _folder = State(initialValue: folder)
+        _viewModel = StateObject(wrappedValue: FolderViewModel(folder: folder))
     }
 
     var body: some View {
-        List {
-            ForEach(viewModel.clothes, id: \.id) { clothing in
-                ClothingCell(clothing: clothing)
-            }
+        Group {
+            if viewModel.isLoading {
+                ProgressView("Loading clothes")
+            } else {
+                List {
+                    ForEach(viewModel.clothes, id: \.id) { clothing in
+                        ClothingCell(clothing: clothing)
+                    }
 
-            ListFooterView(itemName: "Item", count: viewModel.clothes.count)
-        }
-        .listStyle(.plain)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(folder.title)
-        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer) {
-            Text("Search \(folder.title)")
-        }
-        .sheet(isPresented: $isFolderFormVisible) {
-            FolderFormScreen(folder: folder) { folder in
-                self.folder = folder
+                    ListFooterView(itemName: "Item", count: viewModel.clothes.count)
+                }
+                .listStyle(.plain)
             }
         }
-        .sheet(isPresented: $isClothingFormVisible) { ClothingFormScreen() }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(viewModel.folder.title)
+        .onAppear(perform: viewModel.fetchClothes)
+        .refreshable(action: viewModel.fetchClothes)
+        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer) {
+            Text("Search \(viewModel.folder.title)")
+        }
+        .sheet(isPresented: $viewModel.isFolderFormVisible) {
+            FolderFormScreen(folder: viewModel.folder) { folder in
+                viewModel.folder = folder
+            }
+        }
+        .sheet(isPresented: $viewModel.isClothingFormVisible) {
+            ClothingFormScreen()
+        }
         .toolbar {
             Menu {
-                Button(action: { isFolderFormVisible = true }) {
+                Button {
+                    viewModel.isFolderFormVisible = true
+                } label: {
                     Label("Edit folder", systemImage: "pencil")
                 }
 
-                Button(action: { isClothingFormVisible = true }) {
+                Button {
+                    viewModel.isClothingFormVisible = true
+                } label: {
                     Label("Add clothing", systemImage: "plus")
                 }
             } label: {

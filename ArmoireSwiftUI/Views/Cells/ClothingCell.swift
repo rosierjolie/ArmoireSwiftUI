@@ -69,15 +69,17 @@ struct ClothingCell: View {
 
                         HStack {
                             Text("Quantity: \(clothing.quantity)")
-                                .systemScaledFont(size: 9)
-                                .foregroundColor(.secondary)
 
                             Spacer()
 
-                            Text("Last updated on 2/2/2020")
-                                .systemScaledFont(size: 9)
-                                .foregroundColor(.secondary)
+                            if let date = clothing.dateUpdated {
+                                Text("Last updated on \(date.convertToShortFormat())")
+                            } else {
+                                Text("Created on \(clothing.dateCreated.convertToShortFormat())")
+                            }
                         }
+                        .systemScaledFont(size: 9)
+                        .foregroundColor(.secondary)
                     }
                 }
             }

@@ -9,7 +9,7 @@
 import Foundation
 
 extension Date {
-    func convertToDayMonthYearFormat() -> String {
+    func convertToShortFormat() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         return dateFormatter.string(from: self)

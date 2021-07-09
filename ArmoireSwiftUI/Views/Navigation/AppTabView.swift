@@ -10,6 +10,7 @@ import SwiftUI
 
 final class ImageViewerStore: ObservableObject {
     @Published var tappedImage: UIImage?
+    @Published var alertItem: AlertItem?
 }
 
 struct AppTabView: View {

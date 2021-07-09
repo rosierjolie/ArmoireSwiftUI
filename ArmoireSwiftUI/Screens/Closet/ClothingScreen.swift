@@ -26,8 +26,16 @@ struct ClothingScreen: View {
     }
 
     private func presentImageViewer() {
-        withAnimation {
-            imageViewerStore.tappedImage = UIImage(named: "Dress Example")
+        guard let clothingImageUrl = clothing.imageUrl else { return }
+
+        do {
+            let data = try Data(contentsOf: clothingImageUrl)
+            
+            withAnimation {
+                imageViewerStore.tappedImage = UIImage(data: data)
+            }
+        } catch {
+            imageViewerStore.alertItem = .init(errorMessage: error.localizedDescription)
         }
     }
 
@@ -81,6 +89,7 @@ struct ClothingScreen: View {
 
                     Spacer()
 
+                    // TODO: Fix issue where color well displays the wrong color
                     ColorPicker("Color", selection: .constant(Color(hex: clothing.color)))
                         .labelsHidden()
                         .disabled(true)
@@ -91,12 +100,14 @@ struct ClothingScreen: View {
             }
             .padding(.horizontal, 12)
 
-            if let description = clothing.description {
-                ClothingSection(title: "About")
+            ClothingSection(title: "About")
 
-                Text(description)
+            HStack {
+                Text(clothing.description ?? "No description.")
                     .systemScaledFont(size: 14)
                     .padding(.horizontal, 12)
+
+                Spacer()
             }
 
             ClothingSection(title: "Info")
@@ -104,40 +115,38 @@ struct ClothingScreen: View {
             VStack(spacing: 16) {
                 getInfoRow(title: "Quantity", value: "\(clothing.quantity)")
 
-                if let size = clothing.size {
-                    getInfoRow(title: "Size", value: size)
-                }
+                getInfoRow(title: "Size", value: clothing.size ?? "N/a")
 
-                if let material = clothing.material {
-                    getInfoRow(title: "Material", value: material)
-                }
+                getInfoRow(title: "Material", value: clothing.material ?? "N/a")
             }
             .systemScaledFont(size: 16, weight: .medium)
             .padding(.horizontal, 12)
 
-            if let clothingUrl = clothing.url, let url = URL(string: clothingUrl) {
-                ClothingSection(title: "URL")
+            ClothingSection(title: "URL")
 
-                HStack {
+            HStack {
+                if let clothingUrl = clothing.url, let url = URL(string: clothingUrl) {
                     Link(clothingUrl, destination: url)
                         .foregroundColor(Color(.systemTeal))
-                        .padding(.horizontal, 12)
+                } else {
+                    Text("No URL available")
+                        .foregroundColor(.red)
 
                     Spacer()
                 }
             }
+            .padding(.horizontal, 12)
 
             HStack {
-                Text("Created on \(clothing.dateCreated.convertToDayMonthYearFormat())")
+                Text("Created on \(clothing.dateCreated.convertToShortFormat())")
 
                 Spacer()
 
                 if let dateUpdated = clothing.dateUpdated {
-                    Text("Updated on \(dateUpdated.convertToDayMonthYearFormat())")
+                    Text("Updated on \(dateUpdated.convertToShortFormat())")
                 }
             }
             .foregroundColor(Color(.systemGray))
-            .padding(.top, 30)
             .padding(.horizontal, 12)
         }
         .padding(.bottom, 10)
@@ -169,7 +178,9 @@ struct ClothingScreen: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(clothing.name)
         .onReceive(orientation, perform: handleOrientationChange)
-        .sheet(isPresented: $isClothingFormVisible) { ClothingFormScreen(clothing: clothing) }
+        .sheet(isPresented: $isClothingFormVisible) {
+            ClothingFormScreen(clothing: clothing)
+        }
         .toolbar {
             Button(action: { isClothingFormVisible = true }) {
                 Label("Edit clothing", systemImage: "pencil.circle")
