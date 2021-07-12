@@ -34,9 +34,11 @@ struct FolderScreen: View {
         .navigationTitle(viewModel.folder.title)
         .onAppear(perform: viewModel.fetchClothes)
         .refreshable(action: viewModel.fetchClothes)
-        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer) {
-            Text("Search \(viewModel.folder.title)")
-        }
+        .searchable(
+            text: $viewModel.searchText,
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: "Search \(viewModel.folder.title)"
+        )
         .sheet(isPresented: $viewModel.isFolderFormVisible) {
             FolderFormScreen(folder: viewModel.folder) { folder in
                 viewModel.folder = folder

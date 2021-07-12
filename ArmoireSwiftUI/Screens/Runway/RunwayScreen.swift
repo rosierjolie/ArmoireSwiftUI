@@ -35,9 +35,11 @@ struct RunwayScreen: View {
             .padding([.horizontal, .bottom], 20)
         }
         .navigationTitle("Runway")
-        .searchable(text: $searchText, placement: .navigationBarDrawer) {
-            Text("Search Runways")
-        }
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: "Search Runways"
+        )
         .toolbar {
             Button(action: {}) {
                 Label("Create runway", systemImage: "plus.circle")

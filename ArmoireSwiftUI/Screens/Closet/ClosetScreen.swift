@@ -32,9 +32,11 @@ struct ClosetScreen: View {
         .navigationTitle("Closet")
         .onAppear(perform: viewModel.fetchFolders)
         .refreshable(action: viewModel.fetchFolders)
-        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer) {
-            Text("Search Folders")
-        }
+        .searchable(
+            text: $viewModel.searchText,
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: "Search Folders"
+        )
         .sheet(isPresented: $isFolderFormVisible, onDismiss: viewModel.fetchFolders) {
             FolderFormScreen()
         }
