@@ -9,11 +9,21 @@
 import Foundation
 
 final class ClosetViewModel: ObservableObject {
-    @Published var folders: [Folder] = []
+    @Published var fetchedFolders: [Folder] = []
     @Published var searchText = ""
+
+    @Published var isFolderFormVisible = false
 
     @Published var alertItem: AlertItem?
     @Published var isLoading = false
+
+    var folders: [Folder] {
+        let filteredFetchedFolders = fetchedFolders.filter {
+            searchText.isEmpty ? true : $0.title.lowercased().contains(searchText.lowercased())
+        }
+
+        return searchText.isEmpty ? fetchedFolders : filteredFetchedFolders
+    }
 
     init() {
         fetchFolders(withLoading: true)
@@ -31,21 +41,23 @@ final class ClosetViewModel: ObservableObject {
             if withLoading { self.isLoading = false }
 
             switch result {
-            case .success(let folders): self.folders = folders.sorted { $0.title < $1.title }
+            case .success(let folders): self.updateFolders(with: folders)
             case .failure(let error): self.alertItem = AlertItem(errorMessage: error.localizedDescription)
             }
         }
     }
 
+    // MARK: - Swipe action methods
+
     func toggleFavorite(for selectedFolder: Folder) {
-        for (index, folder) in folders.enumerated() {
+        for (index, folder) in fetchedFolders.enumerated() {
             if folder.id == selectedFolder.id {
                 var updatedFolder = folder
                 updatedFolder.isFavorite.toggle()
 
-                folders.remove(at: index)
-                folders.append(updatedFolder)
-                folders.sort { $0.title < $1.title }
+                fetchedFolders.remove(at: index)
+                fetchedFolders.append(updatedFolder)
+                sortFetchedFolders()
 
                 FirebaseManager.shared.updateFolder(updatedFolder)
             }
@@ -53,15 +65,32 @@ final class ClosetViewModel: ObservableObject {
     }
 
     func delete(_ selectedFolder: Folder) {
-        for (index, folder) in folders.enumerated() {
+        for (index, folder) in fetchedFolders.enumerated() {
             if folder.id == selectedFolder.id {
                 FirebaseManager.shared.deleteFolder(folder) { [weak self] error in
                     guard let self = self else { return }
                     self.alertItem = AlertItem(errorMessage: error.localizedDescription)
                 }
 
-                folders.remove(at: index)
+                fetchedFolders.remove(at: index)
             }
         }
+    }
+
+    // MARK: - Private methods
+
+    private func sortFetchedFolders() {
+        fetchedFolders = fetchedFolders.sorted { firstItem, secondItem in
+            if firstItem.isFavorite == secondItem.isFavorite {
+                return firstItem.title < secondItem.title
+            }
+
+            return firstItem.isFavorite && !secondItem.isFavorite
+        }
+    }
+
+    private func updateFolders(with folders: [Folder]) {
+        fetchedFolders = folders
+        sortFetchedFolders()
     }
 }

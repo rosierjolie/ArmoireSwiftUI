@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct ClosetScreen: View {
-    @StateObject private var viewModel = ClosetViewModel()
+    @Environment(\.isSearching) private var isSearching
 
-    @State private var isFolderFormVisible = false
+    @StateObject private var viewModel = ClosetViewModel()
 
     var body: some View {
         Group {
@@ -37,11 +37,11 @@ struct ClosetScreen: View {
             placement: .navigationBarDrawer(displayMode: .always),
             prompt: "Search Folders"
         )
-        .sheet(isPresented: $isFolderFormVisible, onDismiss: viewModel.fetchFolders) {
+        .sheet(isPresented: $viewModel.isFolderFormVisible, onDismiss: viewModel.fetchFolders) {
             FolderFormScreen()
         }
         .toolbar {
-            Button(action: { isFolderFormVisible = true }) {
+            Button(action: { viewModel.isFolderFormVisible = true }) {
                 Label("Create folder", systemImage: "plus.circle")
             }
         }
