@@ -17,11 +17,13 @@ struct Folder: Codable {
     var itemCount: Int
     var userId: String?
 
+    // TODO: Consider creating a failable initializer to prevent nil for userId
     init(title: String = "", description: String? = "", isFavorite: Bool = false, itemCount: Int = 0, userId: String? = "") {
         self.title = title
         self.description = description
         self.isFavorite = isFavorite
-        self.itemCount = 0
+        self.itemCount = itemCount
+        self.userId = userId
     }
 
     static var example: Folder {
