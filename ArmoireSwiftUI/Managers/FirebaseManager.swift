@@ -173,13 +173,13 @@ final class FirebaseManager {
         }
     }
 
-    func favoriteClothing(_ clothing: Clothing, completed: @escaping (Result<Clothing, AMError>) -> Void) {
+    func favoriteClothing(_ clothing: Clothing) {
         guard let id = clothing.id else { return }
         let clothingRef = db.collection("clothes").document(id)
         clothingRef.updateData(["isFavorite": clothing.isFavorite])
     }
 
-    func updateClothing(_ clothing: Clothing, image: UIImage, completed: @escaping (Result<Clothing, AMError>) -> Void) {
+    func updateClothing(_ clothing: Clothing, image: UIImage? = nil, completed: @escaping (Result<Clothing, AMError>) -> Void) {
         guard let id = clothing.id else { return }
         let clothingRef = db.collection("clothes").document(id)
         let storageRef = storage.reference()
@@ -188,64 +188,67 @@ final class FirebaseManager {
 
         guard let dateUpdated = clothing.dateUpdated else { return }
 
-        guard let data = image.jpegData(compressionQuality: 0.8) else {
-            return completed(.failure(.invalidImage))
+        clothingRef.updateData([
+            "name": clothing.name,
+            "brand": clothing.brand,
+            "quantity": clothing.quantity,
+            "color": clothing.color,
+            "isFavorite": clothing.isFavorite,
+            "dateCreated": clothing.dateCreated,
+            "dateUpdated": dateUpdated
+        ])
+
+        if let description = clothing.description {
+            clothingRef.updateData(["description": description])
+        } else {
+            clothingRef.updateData(["description": FieldValue.delete()])
         }
 
-        let uploadTask = clothingImageRef.putData(data, metadata: nil) { metadata, error in
-            clothingImageRef.downloadURL { url, error in
-                if error != nil {
-                    return completed(.failure(.unableToComplete))
-                }
+        if let size = clothing.size {
+            clothingRef.updateData(["size": size])
+        } else {
+            clothingRef.updateData(["size": FieldValue.delete()])
+        }
 
-                guard let downloadUrl = url else {
-                    return completed(.failure(.invalidUrl))
-                }
+        if let material = clothing.material {
+            clothingRef.updateData(["material": material])
+        } else {
+            clothingRef.updateData(["material": FieldValue.delete()])
+        }
 
-                clothingRef.updateData([
-                    "imageUrl": downloadUrl.absoluteString,
-                    "name": clothing.name,
-                    "brand": clothing.brand,
-                    "quantity": clothing.quantity,
-                    "color": clothing.color,
-                    "isFavorite": clothing.isFavorite,
-                    "dateCreated": clothing.dateCreated,
-                    "dateUpdated": dateUpdated
-                ])
+        if let url = clothing.url {
+            clothingRef.updateData(["url": url])
+        } else {
+            clothingRef.updateData(["url": FieldValue.delete()])
+        }
 
-                if let description = clothing.description {
-                    clothingRef.updateData(["description": description])
-                } else {
-                    clothingRef.updateData(["description": FieldValue.delete()])
-                }
+        var updatedClothing = clothing
+        updatedClothing.dateUpdated = dateUpdated
 
-                if let size = clothing.size {
-                    clothingRef.updateData(["size": size])
-                } else {
-                    clothingRef.updateData(["size": FieldValue.delete()])
-                }
-
-                if let material = clothing.material {
-                    clothingRef.updateData(["material": material])
-                } else {
-                    clothingRef.updateData(["material": FieldValue.delete()])
-                }
-
-                if let url = clothing.url {
-                    clothingRef.updateData(["url": url])
-                } else {
-                    clothingRef.updateData(["url": FieldValue.delete()])
-                }
-
-                var updatedClothing = clothing
-                updatedClothing.imageUrl = downloadUrl
-                updatedClothing.dateUpdated = dateUpdated
-
-                completed(.success(updatedClothing))
+        if let image = image {
+            guard let data = image.jpegData(compressionQuality: 0.8) else {
+                return completed(.failure(.invalidImage))
             }
+
+            let uploadTask = clothingImageRef.putData(data, metadata: nil) { metadata, error in
+                clothingImageRef.downloadURL { url, error in
+                    if error != nil {
+                        return completed(.failure(.unableToComplete))
+                    }
+
+                    guard let downloadUrl = url else {
+                        return completed(.failure(.invalidUrl))
+                    }
+
+                    clothingRef.updateData(["imageUrl": downloadUrl.absoluteString])
+                    updatedClothing.imageUrl = downloadUrl
+                }
+            }
+
+            uploadTask.resume()
         }
 
-        uploadTask.resume()
+        completed(.success(updatedClothing))
     }
 
     func deleteClothing(_ clothing: Clothing, folderId: String, errorHandler: @escaping (AMError) -> Void) {
@@ -321,13 +324,10 @@ final class FirebaseManager {
         }
     }
 
-    func fetchItemsCount(for folderId: String, completed: @escaping (Result<Int, AMError>) -> Void) {
-        fetchClothes(for: folderId) { result in
-            switch result {
-            case .success(let clothes): completed(.success(clothes.count))
-            case .failure(let error): completed(.failure(error))
-            }
-        }
+    func favoriteFolder(_ folder: Folder) {
+        guard let folderId = folder.id else { return }
+        let clothingRef = db.collection("folders").document(folderId)
+        clothingRef.updateData(["isFavorite": folder.isFavorite])
     }
 
     func updateFolder(_ folder: Folder, completed: ((Folder) -> Void)? = nil) {

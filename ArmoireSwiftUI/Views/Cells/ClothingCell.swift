@@ -12,6 +12,8 @@ import SwiftUI
 struct ClothingCell: View {
     @Environment(\.colorScheme) private var colorScheme
 
+    @EnvironmentObject private var folderViewModel: FolderViewModel
+
     var clothing: Clothing
 
     private var rowBackground: some View {
@@ -88,14 +90,19 @@ struct ClothingCell: View {
         .listRowInsets(.init(top: 10, leading: 20, bottom: 14, trailing: 20))
         .listRowSeparator(.hidden)
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
-            Button(action: {}) {
+            Button {
+                folderViewModel.toggleFavorite(for: clothing)
+            } label: {
                 Label(clothing.isFavorite ? "Unfavorite" : "Favorite", systemImage: "star")
                     .symbolVariant(clothing.isFavorite ? .slash : .fill)
             }
             .tint(clothing.isFavorite ? .gray : .yellow)
         }
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-            Button(role: .destructive, action: {}) {
+            Button(role: .destructive) {
+                // TODO: Add proper delete animation to cell
+                folderViewModel.delete(clothing)
+            } label: {
                 Label("Delete", systemImage: "trash")
             }
         }

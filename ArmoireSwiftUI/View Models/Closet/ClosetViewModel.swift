@@ -59,7 +59,7 @@ final class ClosetViewModel: ObservableObject {
                 fetchedFolders.append(updatedFolder)
                 sortFetchedFolders()
 
-                FirebaseManager.shared.updateFolder(updatedFolder)
+                FirebaseManager.shared.favoriteFolder(updatedFolder)
             }
         }
     }
@@ -70,6 +70,7 @@ final class ClosetViewModel: ObservableObject {
                 FirebaseManager.shared.deleteFolder(folder) { [weak self] error in
                     guard let self = self else { return }
                     self.alertItem = AlertItem(errorMessage: error.localizedDescription)
+                    return
                 }
 
                 fetchedFolders.remove(at: index)

@@ -23,6 +23,7 @@ struct FolderScreen: View {
                 List {
                     ForEach(viewModel.clothes, id: \.id) { clothing in
                         ClothingCell(clothing: clothing)
+                            .environmentObject(viewModel)
                     }
 
                     ListFooterView(itemName: "Item", count: viewModel.clothes.count)

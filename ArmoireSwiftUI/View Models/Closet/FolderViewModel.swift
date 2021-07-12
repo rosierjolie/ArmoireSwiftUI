@@ -54,6 +54,39 @@ final class FolderViewModel: ObservableObject {
         }
     }
 
+    // MARK: - Swipe action methods
+
+    func toggleFavorite(for selectedClothing: Clothing) {
+        for (index, clothing) in fetchedClothes.enumerated() {
+            if clothing.id == selectedClothing.id {
+                var updatedClothing = clothing
+                updatedClothing.isFavorite.toggle()
+
+                fetchedClothes.remove(at: index)
+                fetchedClothes.append(updatedClothing)
+                sortFetchedClothes()
+
+                FirebaseManager.shared.favoriteClothing(updatedClothing)
+            }
+        }
+    }
+
+    func delete(_ selectedClothing: Clothing) {
+        guard let folderId = folder.id else { return }
+
+        for (index, clothing) in fetchedClothes.enumerated() {
+            if clothing.id == selectedClothing.id {
+                FirebaseManager.shared.deleteClothing(clothing, folderId: folderId) { [weak self] error in
+                    guard let self = self else { return }
+                    self.alertItem = AlertItem(errorMessage: error.localizedDescription)
+                    return
+                }
+
+                fetchedClothes.remove(at: index)
+            }
+        }
+    }
+
     // MARK: - Private methods
 
     private func sortFetchedClothes() {
