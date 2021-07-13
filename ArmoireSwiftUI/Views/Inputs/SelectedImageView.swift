@@ -26,9 +26,3 @@ struct SelectedImageView: View {
         }
     }
 }
-
-struct SelectedImageViewPreviews: PreviewProvider {
-    static var previews: some View {
-        SelectedImageView()
-    }
-}

@@ -50,7 +50,24 @@ struct ClothingScreen: View {
 
     // MARK: - Views
 
-    private func getInfoRow(title: String, value: String) -> some View {
+    private func clothingSection(title: String) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Rectangle()
+                .fill(Color.separator)
+                .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 1)
+
+            Text(title)
+                .systemScaledFont(size: 18, weight: .medium)
+                .foregroundColor(.secondary)
+                .padding(.horizontal, 12)
+
+            Rectangle()
+                .fill(Color.separator)
+                .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 1)
+        }
+    }
+
+    private func clothingInfoRow(title: String, value: String) -> some View {
         HStack {
             Text(title)
                 .fontWeight(.medium)
@@ -113,7 +130,7 @@ struct ClothingScreen: View {
             }
             .padding(.horizontal, 12)
 
-            ClothingSection(title: "About")
+            clothingSection(title: "About")
 
             HStack {
                 Text(clothing.description ?? "No description.")
@@ -123,19 +140,19 @@ struct ClothingScreen: View {
                 Spacer()
             }
 
-            ClothingSection(title: "Info")
+            clothingSection(title: "Info")
 
             VStack(spacing: 16) {
-                getInfoRow(title: "Quantity", value: "\(clothing.quantity)")
+                clothingInfoRow(title: "Quantity", value: "\(clothing.quantity)")
 
-                getInfoRow(title: "Size", value: clothing.size ?? "N/a")
+                clothingInfoRow(title: "Size", value: clothing.size ?? "N/a")
 
-                getInfoRow(title: "Material", value: clothing.material ?? "N/a")
+                clothingInfoRow(title: "Material", value: clothing.material ?? "N/a")
             }
             .systemScaledFont(size: 16, weight: .medium)
             .padding(.horizontal, 12)
 
-            ClothingSection(title: "URL")
+            clothingSection(title: "URL")
 
             HStack {
                 if let clothingUrl = clothing.url, let url = URL(string: clothingUrl) {

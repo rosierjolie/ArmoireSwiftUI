@@ -55,7 +55,6 @@
 		C699B91E267D305B0010571D /* ClothingFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B91D267D305B0010571D /* ClothingFormViewModel.swift */; };
 		C699B921267D4B690010571D /* FormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B920267D4B690010571D /* FormToolbar.swift */; };
 		C699B923267D4FD10010571D /* FolderFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B922267D4FD10010571D /* FolderFormViewModel.swift */; };
-		C699B926267D57EC0010571D /* ClothingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B925267D57EC0010571D /* ClothingSection.swift */; };
 		C699B929267D67410010571D /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B928267D67410010571D /* LoginScreen.swift */; };
 		C699B92B267D67500010571D /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B92A267D67500010571D /* SignUpScreen.swift */; };
 		C699B92D267D67600010571D /* ResetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699B92C267D67600010571D /* ResetScreen.swift */; };
@@ -122,7 +121,6 @@
 		C699B91D267D305B0010571D /* ClothingFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingFormViewModel.swift; sourceTree = "<group>"; };
 		C699B920267D4B690010571D /* FormToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormToolbar.swift; sourceTree = "<group>"; };
 		C699B922267D4FD10010571D /* FolderFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFormViewModel.swift; sourceTree = "<group>"; };
-		C699B925267D57EC0010571D /* ClothingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingSection.swift; sourceTree = "<group>"; };
 		C699B928267D67410010571D /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		C699B92A267D67500010571D /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		C699B92C267D67600010571D /* ResetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetScreen.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 			children = (
 				C699B91F267D32020010571D /* Buttons */,
 				C65B53B026753D190096230A /* Cells */,
-				C699B924267D57DC0010571D /* Closet */,
 				C699B91C267D23A70010571D /* Inputs */,
 				C612FE95267C669200483638 /* Lists */,
 				C65B53AA26753A6E0096230A /* Navigation */,
@@ -389,14 +386,6 @@
 				C6691233268BFEF600F0D411 /* AMNavButton.swift */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		C699B924267D57DC0010571D /* Closet */ = {
-			isa = PBXGroup;
-			children = (
-				C699B925267D57EC0010571D /* ClothingSection.swift */,
-			);
-			path = Closet;
 			sourceTree = "<group>";
 		};
 		C699B927267D67380010571D /* Auth */ = {
@@ -533,7 +522,6 @@
 				C6FAB320267D12E3003BDB3D /* FolderFormScreen.swift in Sources */,
 				C6C3EF422677165300797CE8 /* CanvasViewModel.swift in Sources */,
 				C6C3EF3D2677117700797CE8 /* CanvasScene.swift in Sources */,
-				C699B926267D57EC0010571D /* ClothingSection.swift in Sources */,
 				C612FE87267C58D100483638 /* ClothingScreen.swift in Sources */,
 				C61F1C52268D036A0041F8E4 /* AboutScreen.swift in Sources */,
 				C61F1C4A268D02F30041F8E4 /* UsernameScreen.swift in Sources */,
