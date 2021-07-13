@@ -12,6 +12,7 @@ import SwiftUI
 struct ClothingScreen: View {
     @EnvironmentObject private var imageViewerStore: ImageViewerStore
 
+    @State private var clothingImage: UIImage? = nil
     @State private var isClothingFormVisible = false
     @State private var isLandscapeOrientation = UIDevice.current.orientation.isLandscape
 
@@ -21,23 +22,30 @@ struct ClothingScreen: View {
         .publisher(for: UIDevice.orientationDidChangeNotification)
         .map { _ in UIDevice.current.orientation }
 
+    // MARK: - Methods
+
+    private func configureClothingImage() async {
+        guard let clothingImageUrl = clothing.imageUrl else { return }
+
+        do {
+            let data = try Data(contentsOf: clothingImageUrl)
+            clothingImage = UIImage(data: data)
+        } catch {
+            imageViewerStore.alertItem = .init(errorMessage: error.localizedDescription)
+        }
+    }
+
     private func handleOrientationChange(_ orientation: UIDeviceOrientation) {
         isLandscapeOrientation = UIDevice.current.orientation.isLandscape
     }
 
     private func presentImageViewer() {
-        guard let clothingImageUrl = clothing.imageUrl else { return }
-
-        do {
-            let data = try Data(contentsOf: clothingImageUrl)
-            
-            withAnimation {
-                imageViewerStore.tappedImage = UIImage(data: data)
-            }
-        } catch {
-            imageViewerStore.alertItem = .init(errorMessage: error.localizedDescription)
+        withAnimation {
+            imageViewerStore.tappedImage = clothingImage
         }
     }
+
+    // MARK: - Views
 
     private func getInfoRow(title: String, value: String) -> some View {
         HStack {
@@ -51,7 +59,7 @@ struct ClothingScreen: View {
         .systemScaledFont(size: 16)
     }
 
-    @ViewBuilder private var clothingImage: some View {
+    @ViewBuilder private var clothingImageView: some View {
         Group {
             if isLandscapeOrientation {
                 KFImage(clothing.imageUrl)
@@ -78,6 +86,8 @@ struct ClothingScreen: View {
         .contentShape(Rectangle())
         .onTapGesture(perform: presentImageViewer)
     }
+
+    // MARK: Clothing info view
 
     private var clothingInformationView: some View {
         LazyVStack(spacing: 10) {
@@ -152,12 +162,14 @@ struct ClothingScreen: View {
         .padding(.bottom, 10)
     }
 
+    // MARK: - Body
+
     var body: some View {
         Group {
             if isLandscapeOrientation {
                 GeometryReader { geometry in
                     HStack {
-                        clothingImage
+                        clothingImageView
                             .frame(width: geometry.size.width / 3)
                             .padding(.vertical)
 
@@ -170,7 +182,7 @@ struct ClothingScreen: View {
                 }
             } else {
                 ScrollView {
-                    clothingImage
+                    clothingImageView
                     clothingInformationView
                 }
             }
@@ -181,6 +193,7 @@ struct ClothingScreen: View {
         .sheet(isPresented: $isClothingFormVisible) {
             ClothingFormScreen(clothing: clothing)
         }
+        .task(configureClothingImage)
         .toolbar {
             Button(action: { isClothingFormVisible = true }) {
                 Label("Edit clothing", systemImage: "pencil.circle")
@@ -188,6 +201,8 @@ struct ClothingScreen: View {
         }
     }
 }
+
+// MARK: - Previews
 
 struct ClothingScreenPreviews: PreviewProvider {
     static var previews: some View {
