@@ -39,17 +39,9 @@ final class ClothingFormViewModel: ObservableObject {
 
     func setPreviousValues(clothing: Clothing?) {
         guard let clothing = clothing else { return }
-        selectedClothing = clothing
 
-        do {
-            // Grabs the image data instance
-            if let imageUrl = clothing.imageUrl {
-                let imageData = try Data(contentsOf: imageUrl)
-                selectedImage = UIImage(data: imageData)
-            }
-        } catch {
-            selectedImage = nil
-        }
+        selectedClothing = clothing
+        handleClothingImage(for: clothing)
 
         // Required fields
         name = clothing.name
@@ -64,6 +56,8 @@ final class ClothingFormViewModel: ObservableObject {
         material = clothing.material ?? ""
         url = clothing.url ?? ""
     }
+
+    // MARK: - Action methods
 
     func submitClothing(completed: @escaping (_ clothing: Clothing) -> Void) {
         guard let image = selectedImage else {
@@ -132,6 +126,20 @@ final class ClothingFormViewModel: ObservableObject {
                     }
                 }
             }
+        }
+    }
+
+    // MARK: - Private methods
+
+    private func handleClothingImage(for clothing: Clothing) {
+        // TODO: Figure out a way to make this async to not block the main UI
+        do {
+            if let imageUrl = clothing.imageUrl {
+                let imageData = try Data(contentsOf: imageUrl)
+                selectedImage = UIImage(data: imageData)
+            }
+        } catch {
+            selectedImage = nil
         }
     }
 }

@@ -12,17 +12,20 @@ import SwiftUI
 struct ClothingScreen: View {
     @EnvironmentObject private var imageViewerStore: ImageViewerStore
 
+    @State private var clothing: Clothing
     @State private var clothingImage: UIImage? = nil
     @State private var isClothingFormVisible = false
     @State private var isLandscapeOrientation = UIDevice.current.orientation.isLandscape
-
-    var clothing: Clothing
 
     let orientation = NotificationCenter.default
         .publisher(for: UIDevice.orientationDidChangeNotification)
         .map { _ in UIDevice.current.orientation }
 
     // MARK: - Methods
+
+    init(clothing: Clothing) {
+        _clothing = State(initialValue: clothing)
+    }
 
     private func configureClothingImage() async {
         guard let clothingImageUrl = clothing.imageUrl else { return }
