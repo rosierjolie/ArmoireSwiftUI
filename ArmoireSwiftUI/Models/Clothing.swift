@@ -24,6 +24,7 @@ struct Clothing: Codable {
     var dateCreated = Date()
     var dateUpdated: Date? = nil
     var folder: DocumentReference?
+    var folderId: String
     var userId: String?
 
     static var example: Clothing {
@@ -39,7 +40,8 @@ struct Clothing: Codable {
             material: "Cotton",
             url: "https://www.theprettydresscompany.com/shop-c1/dresses-c2/the-pretty-dress-company-tilly-off-the-shoulder-bow-high-low-gown-p267",
             dateCreated: Date(),
-            dateUpdated: Date()
+            dateUpdated: Date(),
+            folderId: ""
         )
     }
 }

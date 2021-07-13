@@ -89,7 +89,7 @@ final class FolderViewModel: ObservableObject {
 
     // MARK: - Private methods
 
-    private func sortFetchedClothes() {
+    func sortFetchedClothes() {
         fetchedClothes = fetchedClothes.sorted { firstItem, secondItem in
             if firstItem.isFavorite == secondItem.isFavorite {
                 return firstItem.name < secondItem.name

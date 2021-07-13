@@ -191,7 +191,9 @@ struct ClothingScreen: View {
         .navigationTitle(clothing.name)
         .onReceive(orientation, perform: handleOrientationChange)
         .sheet(isPresented: $isClothingFormVisible) {
-            ClothingFormScreen(clothing: clothing)
+            ClothingFormScreen(clothing: clothing) { clothing in
+                print(clothing)
+            }
         }
         .task(configureClothingImage)
         .toolbar {

@@ -11,15 +11,46 @@ import SwiftUI
 struct ClothingFormScreen: View {
     @Environment(\.dismiss) private var dismiss
 
-    @StateObject private var viewModel = ClothingFormViewModel()
     @FocusState private var focusedField: ClothingField?
-
     @State private var isSourceTypeDialogVisible = false
+    @StateObject private var viewModel: ClothingFormViewModel
 
     var clothing: Clothing?
+    var didUpdateClothing: ((_ clothing: Clothing) -> Void)?
 
     private enum ClothingField: Hashable {
         case name, brand, description, size, material, url
+    }
+
+    /// The following **init** method takes in a *folderId* to be used in creating a new clothing
+    /// item. The *folderId* assures that the clothing item is assigned to the correct folder. A
+    /// callback function of *didUpdateClothing* is used in case the parent view needs access to
+    /// the instance of *clothing* before being dismissed.
+    ///
+    /// - Parameters:
+    ///   - folderId: The folder that the clothing item will belong to
+    ///   - didUpdateClothing: Callback function to pass *clothing* back to the parent view
+    init(folderId: String, didUpdateClothing: ((_ clothing: Clothing) -> Void)? = nil) {
+        _viewModel = StateObject(wrappedValue: .init(folderId: folderId))
+        self.didUpdateClothing = didUpdateClothing
+    }
+
+    /// The following **init** method takes in a *clothing* instance to be used in updating an
+    /// existing clothing item in the database. A callback function of *didUpdatingClothing* is
+    /// used in case the parent view needs access to the updated instance of *clothing* before
+    /// being dismissed.
+    ///
+    /// - Parameters:
+    ///   - clothing: A previously created clothing item to be updated
+    ///   - didUpdateClothing: Callback function to pass *clothing* back to the parent view
+    init(clothing: Clothing, didUpdateClothing: ((_ clothing: Clothing) -> Void)? = nil) {
+        _viewModel = StateObject(wrappedValue: .init(clothing: clothing))
+        self.didUpdateClothing = didUpdateClothing
+    }
+
+    private func doneButtonTapped() {
+        viewModel.submitClothing { didUpdateClothing?($0) }
+        dismiss()
     }
 
     private func handleSubmit() {
@@ -80,7 +111,7 @@ struct ClothingFormScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("\(clothing == nil ? "Add" : "Edit") Clothing")
             .toolbar {
-                FormNavigationToolbar(cancel: { dismiss() }, done: viewModel.submitClothing)
+                FormNavigationToolbar(cancel: dismiss.callAsFunction, done: doneButtonTapped)
                 FormKeyboardToolbar(dismissAction: { focusedField = nil })
             }
         }
@@ -115,6 +146,7 @@ struct ClothingFormScreen: View {
 
 struct ClothingFormScreenPreviews: PreviewProvider {
     static var previews: some View {
-        ClothingFormScreen()
+        ClothingFormScreen(folderId: "")
+        ClothingFormScreen(clothing: .example)
     }
 }

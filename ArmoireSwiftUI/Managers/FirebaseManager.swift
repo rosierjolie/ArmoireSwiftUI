@@ -100,6 +100,7 @@ final class FirebaseManager {
                     dateCreated: clothing.dateCreated,
                     dateUpdated: clothing.dateUpdated,
                     folder: folderRef,
+                    folderId: folderId,
                     userId: uid
                 )
 

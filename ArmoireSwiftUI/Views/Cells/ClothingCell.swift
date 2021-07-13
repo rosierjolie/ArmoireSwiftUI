@@ -34,55 +34,54 @@ struct ClothingCell: View {
             }
             .opacity(0)
 
-            VStack(spacing: 10) {
-                HStack(spacing: 10) {
-                    KFImage(clothing.imageUrl)
-                        .resizable()
-                        .placeholder {
-                            Image("Placeholder")
-                                .resizable()
-                                .frame(width: 100, height: 100)
-                        }
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                        .clipped()
-
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack {
-                            Text(clothing.name)
-                                .systemScaledFont(size: 20, weight: .medium)
-                                .foregroundColor(.accentColor)
-
-                            Spacer()
-
-                            Image(systemName: "star.fill")
-                                .foregroundColor(clothing.isFavorite ? .yellow : .gray)
-                                .systemScaledFont(size: 20)
-                        }
-
-                        Text(clothing.brand)
-                            .systemScaledFont(size: 12, weight: .medium)
-
-                        Text(clothing.description ?? "No description.")
-                            .systemScaledFont(size: 11)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .lineLimit(2)
-                            .padding(.bottom, 11)
-
-                        HStack {
-                            Text("Quantity: \(clothing.quantity)")
-
-                            Spacer()
-
-                            if let date = clothing.dateUpdated {
-                                Text("Last updated on \(date.convertToShortFormat())")
-                            } else {
-                                Text("Created on \(clothing.dateCreated.convertToShortFormat())")
-                            }
-                        }
-                        .systemScaledFont(size: 9)
-                        .foregroundColor(.secondary)
+            HStack(spacing: 10) {
+                KFImage(clothing.imageUrl)
+                    .resizable()
+                    .placeholder {
+                        Image("Placeholder")
+                            .resizable()
+                            .frame(width: 100, height: 100)
                     }
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                    .clipped()
+
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        Text(clothing.name)
+                            .systemScaledFont(size: 20, weight: .medium)
+                            .foregroundColor(.accentColor)
+
+                        Spacer()
+
+                        Image(systemName: "star.fill")
+                            .foregroundColor(clothing.isFavorite ? .yellow : .gray)
+                            .systemScaledFont(size: 20)
+                    }
+
+                    Text(clothing.brand)
+                        .systemScaledFont(size: 12, weight: .medium)
+
+                    Text(clothing.description ?? "No description.")
+                        .systemScaledFont(size: 11)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(2)
+
+                    Spacer()
+
+                    HStack {
+                        Text("Quantity: \(clothing.quantity)")
+
+                        Spacer()
+
+                        if let date = clothing.dateUpdated {
+                            Text("Last updated on \(date.convertToShortFormat())")
+                        } else {
+                            Text("Created on \(clothing.dateCreated.convertToShortFormat())")
+                        }
+                    }
+                    .systemScaledFont(size: 9)
+                    .foregroundColor(.secondary)
                 }
             }
         }
@@ -111,7 +110,10 @@ struct ClothingCell: View {
 
 struct ClothingCellPreviews: PreviewProvider {
     static var previews: some View {
-        ClothingCell(clothing: .example)
-            .previewLayout(.sizeThatFits)
+        List {
+            ClothingCell(clothing: .example)
+                .previewLayout(.sizeThatFits)
+        }
+        .listStyle(.plain)
     }
 }

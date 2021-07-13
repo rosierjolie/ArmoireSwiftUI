@@ -12,7 +12,7 @@ struct FolderScreen: View {
     @StateObject private var viewModel: FolderViewModel
 
     init(folder: Folder) {
-        _viewModel = StateObject(wrappedValue: FolderViewModel(folder: folder))
+        _viewModel = StateObject(wrappedValue: .init(folder: folder))
     }
 
     var body: some View {
@@ -46,7 +46,12 @@ struct FolderScreen: View {
             }
         }
         .sheet(isPresented: $viewModel.isClothingFormVisible) {
-            ClothingFormScreen()
+            if let folderId = viewModel.folder.id {
+                ClothingFormScreen(folderId: folderId) { clothing in
+                    viewModel.fetchedClothes.append(clothing)
+                    viewModel.sortFetchedClothes()
+                }
+            }
         }
         .toolbar {
             Menu {
