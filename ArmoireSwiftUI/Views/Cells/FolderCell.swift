@@ -50,7 +50,7 @@ struct FolderCell: View {
                     .lineLimit(2)
                     .padding(.bottom, 8)
 
-                Text(folder.itemCount == 0 ? "Empty folder" : "\(folder.itemCount) items")
+                Text(folder.itemCount == 1 ? "1 item" : "\(folder.itemCount) items")
                     .systemScaledFont(size: 9)
                     .foregroundColor(.gray)
             }
