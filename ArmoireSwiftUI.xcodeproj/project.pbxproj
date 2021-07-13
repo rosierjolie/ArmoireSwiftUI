@@ -190,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				C65B53B326753E920096230A /* ListFooterView.swift */,
+				C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -274,9 +275,7 @@
 				C699B91C267D23A70010571D /* Inputs */,
 				C612FE95267C669200483638 /* Lists */,
 				C65B53AA26753A6E0096230A /* Navigation */,
-				C6ED90D7267DA68E00C917D2 /* Profile */,
 				C612FE94267C668800483638 /* Toolbars */,
-				C6B4790B2682F0FF0078B727 /* UIKit */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,6 +355,7 @@
 			children = (
 				C612FE84267C52E100483638 /* ClothingCell.swift */,
 				C65B53B126753D5C0096230A /* FolderCell.swift */,
+				C6ED90DC267DAC5300C917D2 /* NavigationCell.swift */,
 				C6CB44AC2698E9370076D89D /* RunwayCell.swift */,
 			);
 			path = Cells;
@@ -374,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				C6FAB323267D14A6003BDB3D /* AMTextField.swift */,
+				C6B4790C2682F1060078B727 /* ImagePicker.swift */,
 				C676CB4F2683D5EA003DFCEF /* SelectedImageView.swift */,
 			);
 			path = Inputs;
@@ -398,14 +399,6 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		C6B4790B2682F0FF0078B727 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				C6B4790C2682F1060078B727 /* ImagePicker.swift */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
 		C6C3EF402677163D00797CE8 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,15 +407,6 @@
 				C61F1C48268CF9C30041F8E4 /* Runway */,
 			);
 			path = "View Models";
-			sourceTree = "<group>";
-		};
-		C6ED90D7267DA68E00C917D2 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				C6ED90DC267DAC5300C917D2 /* NavigationCell.swift */,
-				C6ED90D8267DA6A400C917D2 /* ProfileHeaderView.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
