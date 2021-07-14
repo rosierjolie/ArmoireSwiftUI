@@ -24,6 +24,7 @@ final class ClothingFormViewModel: ObservableObject {
     @Published var url = ""
 
     @Published var alertItem: AlertItem?
+    @Published var isLoading = false
 
     var folderId = ""
 
@@ -94,8 +95,12 @@ final class ClothingFormViewModel: ObservableObject {
                     folderId: clothing.folderId
                 )
 
+                isLoading = true
+
                 FirebaseManager.shared.updateClothing(updatedClothing, image: image) { [weak self] result in
                     guard let self = self else { return }
+
+                    self.isLoading = false
 
                     switch result {
                     case .success(let clothing): completed(clothing)
@@ -116,9 +121,12 @@ final class ClothingFormViewModel: ObservableObject {
                     folderId: folderId
                 )
 
-                // TODO: Figure out how to get the folderId without having to prop drill to nuclear levels
+                isLoading = true
+
                 FirebaseManager.shared.addClothing(with: newClothing, image: image, folderId: folderId) { [weak self] result in
                     guard let self = self else { return }
+
+                    self.isLoading = false
 
                     switch result {
                     case .success(let clothing): completed(clothing)

@@ -6,6 +6,7 @@
 // Copyright © 2021 Geraldine Turcios. All rights reserved.
 //
 
+import AlertToast
 import SwiftUI
 
 struct ClothingFormScreen: View {
@@ -49,8 +50,10 @@ struct ClothingFormScreen: View {
     }
 
     private func doneButtonTapped() {
-        viewModel.submitClothing { didUpdateClothing?($0) }
-        dismiss()
+        viewModel.submitClothing {
+            didUpdateClothing?($0)
+            dismiss()
+        }
     }
 
     private func handleSubmit() {
@@ -132,6 +135,13 @@ struct ClothingFormScreen: View {
                 ]
             )
         }
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(
+                title: alertItem.title,
+                message: alertItem.message,
+                dismissButton: .default(alertItem.buttonTitle)
+            )
+        }
         .onAppear { viewModel.setPreviousValues(clothing: clothing) }
         .onSubmit(handleSubmit)
         .navigationViewStyle(.stack)
@@ -140,6 +150,9 @@ struct ClothingFormScreen: View {
                 sourceType: sourceTypeItem.sourceType,
                 selectedImage: $viewModel.selectedImage
             )
+        }
+        .toast(isPresenting: $viewModel.isLoading) {
+            AlertToast(displayMode: .alert, type: .loading, title: "Please wait")
         }
     }
 }

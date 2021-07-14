@@ -37,6 +37,7 @@ struct ClothingCell: View {
             HStack(spacing: 10) {
                 KFImage(clothing.imageUrl)
                     .resizable()
+                    .loadImmediately()
                     .placeholder {
                         Image("Placeholder")
                             .resizable()
