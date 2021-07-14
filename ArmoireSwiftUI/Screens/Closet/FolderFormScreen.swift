@@ -17,8 +17,10 @@ struct FolderFormScreen: View {
     var didUpdateFolder: ((_ folder: Folder) -> Void)?
 
     private func doneButtonTapped() {
-        viewModel.submitFolder { didUpdateFolder?($0) }
-        dismiss()
+        viewModel.submitFolder {
+            didUpdateFolder?($0)
+            dismiss()
+        }
     }
 
     var body: some View {
@@ -42,6 +44,13 @@ struct FolderFormScreen: View {
             .toolbar {
                 FormNavigationToolbar(cancel: dismiss.callAsFunction, done: doneButtonTapped)
             }
+        }
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(
+                title: alertItem.title,
+                message: alertItem.message,
+                dismissButton: .default(alertItem.buttonTitle)
+            )
         }
         .navigationViewStyle(.stack)
         .onAppear { viewModel.setPreviousValues(folder: folder) }

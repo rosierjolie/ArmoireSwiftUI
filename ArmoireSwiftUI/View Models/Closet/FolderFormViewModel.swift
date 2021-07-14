@@ -19,17 +19,16 @@ final class FolderFormViewModel: ObservableObject {
 
     func setPreviousValues(folder: Folder?) {
         guard let folder = folder else { return }
+        selectedFolder = folder
 
         title = folder.title
         description = folder.description ?? ""
         isMarkedAsFavorite = folder.isFavorite
-
-        selectedFolder = folder
     }
 
     func submitFolder(completed: @escaping (_ folder: Folder) -> Void) {
         if title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            alertItem = AlertItem(errorMessage: "The title text field must not be empty.")
+            return alertItem = AlertItem(errorMessage: "The title text field must not be empty.")
         } else {
             if let folder = selectedFolder {
                 let description = description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : description
