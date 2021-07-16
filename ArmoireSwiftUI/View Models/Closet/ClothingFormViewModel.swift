@@ -39,7 +39,7 @@ final class ClothingFormViewModel: ObservableObject {
     }
 
     init(clothing: Clothing? = nil) {
-        self.setPreviousValues(clothing: clothing)
+        setPreviousValues(clothing: clothing)
     }
 
     func setPreviousValues(clothing: Clothing?) {
@@ -51,6 +51,10 @@ final class ClothingFormViewModel: ObservableObject {
         brand = clothing.brand
         quantity = clothing.quantity
         color = Color(hex: clothing.color)
+
+        let selectedColor = Color(hex: clothing.color)
+        print(selectedColor.hexDescription(includeAlpha: true))
+
         markedAsFavorite = clothing.isFavorite
 
         description = clothing.description ?? ""
@@ -85,7 +89,7 @@ final class ClothingFormViewModel: ObservableObject {
                     name: name,
                     brand: brand,
                     quantity: quantity,
-                    color: color.hexDescription(includeAlpha: true),
+                    color: color.hexDescription(includeAlpha: false),
                     isFavorite: markedAsFavorite,
                     description: description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : description,
                     size: size.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : size,

@@ -119,7 +119,6 @@ struct ClothingScreen: View {
 
                     Spacer()
 
-                    // TODO: Fix issue where color well displays the wrong color
                     ColorPicker("Color", selection: .constant(Color(hex: clothing.color)))
                         .labelsHidden()
                         .disabled(true)

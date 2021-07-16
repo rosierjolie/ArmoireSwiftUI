@@ -88,6 +88,7 @@ struct ClothingFormScreen: View {
                                 image
                                     .resizable()
                                     .scaledToFit()
+                                    .frame(maxHeight: 280)
                             } placeholder: {
                                 ProgressView("Loading image")
                             }
