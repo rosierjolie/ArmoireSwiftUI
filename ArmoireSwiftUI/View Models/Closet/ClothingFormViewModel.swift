@@ -9,15 +9,19 @@
 import SwiftUI
 
 final class ClothingFormViewModel: ObservableObject {
+    // Used to track properties when the user selects a new image from the image picker
     @Published var sourceTypeItem: SourceTypeItem?
     @Published var selectedImage: UIImage?
 
+    // Required fields
+    @Published var imageUrl: URL? = nil
     @Published var name = ""
     @Published var brand = ""
     @Published var quantity = 0
     @Published var color: Color = .accentColor
     @Published var markedAsFavorite = false
 
+    // Optional fields
     @Published var description = ""
     @Published var size = ""
     @Published var material = ""
@@ -40,18 +44,15 @@ final class ClothingFormViewModel: ObservableObject {
 
     func setPreviousValues(clothing: Clothing?) {
         guard let clothing = clothing else { return }
-
         selectedClothing = clothing
-        handleClothingImage(for: clothing)
 
-        // Required fields
+        imageUrl = clothing.imageUrl
         name = clothing.name
         brand = clothing.brand
         quantity = clothing.quantity
         color = Color(hex: clothing.color)
         markedAsFavorite = clothing.isFavorite
 
-        // Optional fields
         description = clothing.description ?? ""
         size = clothing.size ?? ""
         material = clothing.material ?? ""
@@ -61,10 +62,6 @@ final class ClothingFormViewModel: ObservableObject {
     // MARK: - Action methods
 
     func submitClothing(completed: @escaping (_ clothing: Clothing) -> Void) {
-        guard let image = selectedImage else {
-            return alertItem = .init(errorMessage: "An image is required when adding a clothing item. Please add an image and try again.")
-        }
-
         if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             // Shows an error if a name was not entered
             return alertItem = .init(errorMessage: "A title is required when adding a clothing item. Please enter a title and try again.")
@@ -73,9 +70,14 @@ final class ClothingFormViewModel: ObservableObject {
             return alertItem = .init(errorMessage: "A brand is required when adding a clothing item. Please enter a brand and try again.")
         } else {
             if let clothing = selectedClothing {
-                FirebaseManager.shared.deleteClothingImage(for: clothing) { [weak self] error in
-                    guard let self = self else { return }
-                    return self.alertItem = .init(errorMessage: error.localizedDescription)
+                // Run actions for updating an old clothing item
+
+                if selectedImage != nil {
+                    // Deletes the previous image from firebase if a new image is selected
+                    FirebaseManager.shared.deleteClothingImage(for: clothing) { [weak self] error in
+                        guard let self = self else { return }
+                        return self.alertItem = .init(errorMessage: error.localizedDescription)
+                    }
                 }
 
                 let updatedClothing = Clothing(
@@ -97,7 +99,7 @@ final class ClothingFormViewModel: ObservableObject {
 
                 isLoading = true
 
-                FirebaseManager.shared.updateClothing(updatedClothing, image: image) { [weak self] result in
+                FirebaseManager.shared.updateClothing(updatedClothing, image: selectedImage) { [weak self] result in
                     guard let self = self else { return }
 
                     self.isLoading = false
@@ -108,6 +110,12 @@ final class ClothingFormViewModel: ObservableObject {
                     }
                 }
             } else {
+                // Run actions for creating a new clothing item
+
+                guard let image = selectedImage else {
+                    return alertItem = .init(errorMessage: "An image is required when adding a clothing item. Please add an image and try again.")
+                }
+
                 let newClothing = Clothing(
                     name: name,
                     brand: brand,
@@ -134,20 +142,6 @@ final class ClothingFormViewModel: ObservableObject {
                     }
                 }
             }
-        }
-    }
-
-    // MARK: - Private methods
-
-    private func handleClothingImage(for clothing: Clothing) {
-        // TODO: Figure out a way to make this async to not block the main UI
-        do {
-            if let imageUrl = clothing.imageUrl {
-                let imageData = try Data(contentsOf: imageUrl)
-                selectedImage = UIImage(data: imageData)
-            }
-        } catch {
-            selectedImage = nil
         }
     }
 }

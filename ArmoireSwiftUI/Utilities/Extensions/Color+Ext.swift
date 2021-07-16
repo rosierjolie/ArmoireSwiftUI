@@ -41,8 +41,6 @@ extension Color {
         guard cgColor?.numberOfComponents == 4 else { return "#000000" }
         let a = cgColor?.components?.map { Int($0 * CGFloat(255)) }
         guard let a = a else { return "#000000" }
-
-
         let color = String.init(format: "%02x%02x%02x", a[0], a[1], a[2])
 
         if includeAlpha {

@@ -13,10 +13,10 @@ struct ClothingFormScreen: View {
     @Environment(\.dismiss) private var dismiss
 
     @FocusState private var focusedField: ClothingField?
+    @State private var isNewClothing = false
     @State private var isSourceTypeDialogVisible = false
     @StateObject private var viewModel: ClothingFormViewModel
 
-    var clothing: Clothing?
     var didUpdateClothing: ((_ clothing: Clothing) -> Void)?
 
     private enum ClothingField: Hashable {
@@ -32,6 +32,7 @@ struct ClothingFormScreen: View {
     ///   - folderId: The folder that the clothing item will belong to
     ///   - didUpdateClothing: Callback function to pass *clothing* back to the parent view
     init(folderId: String, didUpdateClothing: ((_ clothing: Clothing) -> Void)? = nil) {
+        _isNewClothing = State(initialValue: true)
         _viewModel = StateObject(wrappedValue: .init(folderId: folderId))
         self.didUpdateClothing = didUpdateClothing
     }
@@ -69,7 +70,29 @@ struct ClothingFormScreen: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    SelectedImageView(selectedImage: viewModel.selectedImage)
+                    if let selectedImage = viewModel.selectedImage {
+                        HStack {
+                            Spacer()
+
+                            Image(uiImage: selectedImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 280)
+
+                            Spacer()
+                        }
+                    } else {
+                        // Used to show an image from a previously created clothing item
+                        if let imageUrl = viewModel.imageUrl {
+                            AsyncImage(url: imageUrl) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                            } placeholder: {
+                                ProgressView("Loading image")
+                            }
+                        }
+                    }
 
                     AMButton(title: "Add Image") { isSourceTypeDialogVisible = true }
 
@@ -112,7 +135,7 @@ struct ClothingFormScreen: View {
                 .padding(20)
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("\(clothing == nil ? "Add" : "Edit") Clothing")
+            .navigationTitle("\(isNewClothing ? "Add" : "Edit") Clothing")
             .toolbar {
                 FormNavigationToolbar(cancel: dismiss.callAsFunction, done: doneButtonTapped)
                 FormKeyboardToolbar(dismissAction: { focusedField = nil })
@@ -142,7 +165,6 @@ struct ClothingFormScreen: View {
                 dismissButton: .default(alertItem.buttonTitle)
             )
         }
-        .onAppear { viewModel.setPreviousValues(clothing: clothing) }
         .onSubmit(handleSubmit)
         .navigationViewStyle(.stack)
         .sheet(item: $viewModel.sourceTypeItem) { sourceTypeItem in

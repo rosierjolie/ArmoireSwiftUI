@@ -224,6 +224,7 @@ final class FirebaseManager {
         var updatedClothing = clothing
         updatedClothing.dateUpdated = dateUpdated
 
+        // For updating clothing items, the following runs when a new image was selected
         if let image = image {
             guard let data = image.jpegData(compressionQuality: 0.8) else {
                 return completed(.failure(.invalidImage))
